@@ -22,9 +22,18 @@ from .models import Bar, Instrument, Rule, Signal
 class Context:
     """Memoised view of one instrument's price history."""
 
-    def __init__(self, inst: Instrument, bars: Sequence[Bar]) -> None:
+    def __init__(
+        self,
+        inst: Instrument,
+        bars: Sequence[Bar],
+        events: Optional[Sequence[object]] = None,
+    ) -> None:
         self.inst = inst
         self.bars = list(bars)
+        # Scheduled events the price series cannot reveal. The soonest one is
+        # what rules care about, and what enriches every other alert.
+        self.events = list(events or [])
+        self.next_earnings = self.events[0] if self.events else None
         self.closes = [b.close for b in self.bars]
         self.highs = [b.high for b in self.bars]
         self.lows = [b.low for b in self.bars]
@@ -482,6 +491,54 @@ def eval_near_extreme(ctx: Context, rule: Rule) -> Optional[Signal]:
     return None
 
 
+def eval_earnings_soon(ctx: Context, rule: Rule) -> Optional[Signal]:
+    """Fires when a company is about to report.
+
+    This is the rule that answers "what should I watch today" — a scheduled
+    event is a far better reason to pay attention than any indicator reading,
+    because it is a known unknown with a known time.
+    """
+    within = int(rule.param("within_days", 1))
+    event = ctx.next_earnings
+    if event is None:
+        return None
+
+    days = event.days_away()
+    if days < 0 or days > within:
+        return None
+
+    rsi = ind.last(ctx.rsi(14))
+    drop = ind.pct_from_extreme(ctx.closes, 252, high=True)
+    context_bits = []
+    if rsi is not None:
+        context_bits.append(f"RSI {rsi:.0f}")
+    if drop is not None:
+        context_bits.append(f"{_pct(drop)} from its 52-week high")
+    context = ", ".join(context_bits)
+
+    headline = (
+        f"Reports earnings TODAY {event.when_text}"
+        if days == 0
+        else f"Reports earnings {event.describe()}"
+    )
+    detail = (
+        f"{ctx.inst.name} {event.describe()}. Last close {_fmt(ctx.close)}"
+        + (f" ({context})." if context else ".")
+        + (f" Consensus EPS {event.eps_forecast}." if event.eps_forecast else "")
+        + " Results are a scheduled unknown: moves around them are often large "
+        "in both directions, and a beat can still sell off."
+    )
+    return _signal(
+        ctx,
+        rule,
+        headline,
+        detail,
+        earnings_date=event.day.isoformat(),
+        when=event.when,
+        days_away=days,
+    )
+
+
 EVALUATORS: Dict[str, Callable[[Context, Rule], Optional[Signal]]] = {
     "ma_cross": eval_ma_cross,
     "rsi": eval_rsi,
@@ -494,6 +551,7 @@ EVALUATORS: Dict[str, Callable[[Context, Rule], Optional[Signal]]] = {
     "bollinger_break": eval_bollinger_break,
     "vol_regime": eval_vol_regime,
     "near_extreme": eval_near_extreme,
+    "earnings_soon": eval_earnings_soon,
 }
 
 
@@ -502,7 +560,10 @@ class UnknownRuleKind(KeyError):
 
 
 def evaluate(
-    inst: Instrument, bars: Sequence[Bar], rules: Sequence[Rule]
+    inst: Instrument,
+    bars: Sequence[Bar],
+    rules: Sequence[Rule],
+    events: Optional[Sequence[object]] = None,
 ) -> tuple[List[Signal], List[str]]:
     """Run every rule against one instrument.
 
@@ -513,7 +574,7 @@ def evaluate(
     if not bars:
         return [], [f"{inst.id}: no price data"]
 
-    ctx = Context(inst, bars)
+    ctx = Context(inst, bars, events)
     signals: List[Signal] = []
 
     for rule in rules:
@@ -532,15 +593,32 @@ def evaluate(
         if signal:
             signals.append(signal)
 
+    # A scheduled report changes how every other signal on that instrument
+    # should be read: a 5% drop two days before earnings is a different thing
+    # from a 5% drop in a quiet week. Rather than make you cross-reference,
+    # every alert for that instrument carries the date.
+    event = ctx.next_earnings
+    if event is not None and 0 <= event.days_away() <= 3:
+        note = f" Note: {inst.name} {event.describe()}."
+        for signal in signals:
+            if signal.evidence.get("earnings_date"):
+                continue  # the earnings rule already says this
+            signal.detail += note
+            signal.evidence["earnings_date"] = event.day.isoformat()
+
     return signals, problems
 
 
-def snapshot(inst: Instrument, bars: Sequence[Bar]) -> Dict[str, object]:
+def snapshot(
+    inst: Instrument,
+    bars: Sequence[Bar],
+    events: Optional[Sequence[object]] = None,
+) -> Dict[str, object]:
     """Per-instrument metrics for the dashboard, independent of any rule."""
     if not bars:
         return {"instrument_id": inst.id, "status": "no data"}
 
-    ctx = Context(inst, bars)
+    ctx = Context(inst, bars, events)
     change_1d = ind.last(ind.returns(ctx.closes))
     return {
         "instrument_id": inst.id,
@@ -565,6 +643,12 @@ def snapshot(inst: Instrument, bars: Sequence[Bar]) -> Dict[str, object]:
         "realized_vol_20": _round(ind.last(ctx.realized_vol(20))),
         "from_252d_high": _round(ind.pct_from_extreme(ctx.closes, 252, high=True)),
         "bars": len(bars),
+        "earnings_date": (
+            ctx.next_earnings.day.isoformat() if ctx.next_earnings else None
+        ),
+        "earnings_when": (
+            ctx.next_earnings.describe() if ctx.next_earnings else None
+        ),
     }
 
 

@@ -190,3 +190,25 @@ label = "Crypto RSI below 25"
 level = "medium"
 period = 14
 below = 25
+
+# ------------------------------------------------- scheduled events
+# These are the "watch this today" rules. A known event at a known time is a
+# far better reason to pay attention than any indicator reading, because the
+# uncertainty resolves on a schedule rather than drifting.
+#
+# Only attach these to individual companies. Index ETFs and crypto do not
+# report earnings.
+
+[[rule]]
+id = "earnings_today"
+kind = "earnings_soon"
+label = "Reports earnings today"
+level = "high"
+within_days = 0
+
+[[rule]]
+id = "earnings_tomorrow"
+kind = "earnings_soon"
+label = "Reports earnings tomorrow"
+level = "medium"
+within_days = 1

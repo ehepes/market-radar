@@ -11,7 +11,7 @@ broke rather than just that something did.
 from __future__ import annotations
 
 import tempfile
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Callable, List, Optional, Sequence, Tuple
 
@@ -192,6 +192,7 @@ def check_all_rule_kinds_run() -> None:
         Rule(id="bb", kind="bollinger_break", params={"period": 20}),
         Rule(id="vr", kind="vol_regime", params={"period": 20, "above_pct": 40}),
         Rule(id="ne", kind="near_extreme", params={"lookback": 252, "within_pct": 2}),
+        Rule(id="es", kind="earnings_soon", params={"within_days": 1}),
     ]
     assert {r.kind for r in rules} == set(EVALUATORS), (
         "selftest must exercise every rule kind; missing: "
@@ -576,6 +577,58 @@ def check_state_rules_fire_on_entry() -> None:
     )
 
 
+def check_earnings_rule() -> None:
+    """Scheduled reports fire as alerts and annotate every other signal."""
+    from .providers.earnings import EarningsEvent
+
+    today = datetime.now(timezone.utc).date()
+    inst = instrument(id="nv", name="Nvidia", signal_symbol="NVDA", trade_ticker="NVDA")
+    closes = [100.0 + i * 0.1 for i in range(120)]
+    rule = Rule(id="e", kind="earnings_soon", level="high", params={"within_days": 1})
+
+    # Nothing scheduled -> silent.
+    assert not evaluate(inst, bars_from(closes), [rule])[0], (
+        "no calendar entry must mean no earnings alert"
+    )
+
+    # Reporting today -> fires, and says when.
+    today_event = [EarningsEvent("NVDA", today, "time-after-hours", "$2.47")]
+    signals, problems = evaluate(inst, bars_from(closes), [rule], today_event)
+    assert not problems and len(signals) == 1, f"expected 1 signal, got {signals}"
+    assert "TODAY" in signals[0].headline, signals[0].headline
+    assert "after the US close" in signals[0].detail, signals[0].detail
+    assert signals[0].level == "high"
+
+    # Too far out -> silent at within_days=1.
+    far = [EarningsEvent("NVDA", today + timedelta(days=5), "time-pre-market")]
+    assert not evaluate(inst, bars_from(closes), [rule], far)[0], (
+        "an event 5 days out must not fire a 1-day rule"
+    )
+
+    # A pending report annotates OTHER signals for the same instrument, so a
+    # price alert never arrives without that context.
+    drop = closes[:-1] + [closes[-1] * 0.80]
+    move = Rule(id="m", kind="pct_move", level="medium", params={"days": 1, "pct": 5})
+    tomorrow = [EarningsEvent("NVDA", today + timedelta(days=1), "time-after-hours")]
+    enriched, _ = evaluate(inst, bars_from(drop), [move], tomorrow)
+    assert len(enriched) == 1
+    assert "reports TOMORROW" in enriched[0].detail, (
+        f"price alerts must carry the earnings date: {enriched[0].detail}"
+    )
+    assert enriched[0].evidence.get("earnings_date")
+
+    # Without an event the same signal stays unannotated.
+    plain, _ = evaluate(inst, bars_from(drop), [move])
+    assert "reports" not in plain[0].detail
+
+    # describe() phrasing
+    assert "TODAY" in EarningsEvent("X", today).describe()
+    assert EarningsEvent("X", today - timedelta(days=2)).days_away() == -2
+
+    snap = snapshot(inst, bars_from(closes), today_event)
+    assert snap["earnings_date"] == today.isoformat(), "dashboard needs the date"
+
+
 CHECKS: List[Tuple[str, Callable[[], None]]] = [
     ("indicators", check_indicators),
     ("moving-average cross fires once", check_ma_cross_fires_on_the_cross),
@@ -593,6 +646,7 @@ CHECKS: List[Tuple[str, Callable[[], None]]] = [
     ("dashboard payload", check_dashboard_payload),
     ("position privacy on a public dashboard", check_portfolio_privacy),
     ("state rules fire on entry only", check_state_rules_fire_on_entry),
+    ("earnings alerts and annotation", check_earnings_rule),
     ("shipped config validates", check_shipped_config),
 ]
 

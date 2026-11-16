@@ -122,7 +122,7 @@ name = "Apple"
 asset_class = "equity"
 signal_symbol = "AAPL"
 trade_ticker = "AAPL"
-rules = ["trend_regime", "pullback_to_50", "oversold_dip", "overbought", "breakout_20d", "drawdown_20pct", "big_move_1d", "unusual_volume", "momentum_turn"]
+rules = ["earnings_today", "earnings_tomorrow", "trend_regime", "pullback_to_50", "oversold_dip", "overbought", "breakout_20d", "drawdown_20pct", "big_move_1d", "unusual_volume", "momentum_turn"]
 
 [[instrument]]
 id = "msft"
@@ -130,7 +130,7 @@ name = "Microsoft"
 asset_class = "equity"
 signal_symbol = "MSFT"
 trade_ticker = "MSFT"
-rules = ["trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d", "unusual_volume"]
+rules = ["earnings_today", "earnings_tomorrow", "trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d", "unusual_volume"]
 
 [[instrument]]
 id = "nvda"
@@ -139,7 +139,7 @@ asset_class = "equity"
 signal_symbol = "NVDA"
 trade_ticker = "NVDA"
 trade_note = "High realised volatility; the 5% daily-move rule will fire often here."
-rules = ["trend_regime", "pullback_to_50", "oversold_dip", "overbought", "breakout_20d", "drawdown_20pct", "big_move_5d", "unusual_volume", "vol_regime_shift"]
+rules = ["earnings_today", "earnings_tomorrow", "trend_regime", "pullback_to_50", "oversold_dip", "overbought", "breakout_20d", "drawdown_20pct", "big_move_5d", "unusual_volume", "vol_regime_shift"]
 
 [[instrument]]
 id = "googl"
@@ -147,7 +147,7 @@ name = "Alphabet"
 asset_class = "equity"
 signal_symbol = "GOOGL"
 trade_ticker = "GOOGL"
-rules = ["trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d", "unusual_volume"]
+rules = ["earnings_today", "earnings_tomorrow", "trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d", "unusual_volume"]
 
 [[instrument]]
 id = "amzn"
@@ -155,7 +155,7 @@ name = "Amazon"
 asset_class = "equity"
 signal_symbol = "AMZN"
 trade_ticker = "AMZN"
-rules = ["trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d", "unusual_volume"]
+rules = ["earnings_today", "earnings_tomorrow", "trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d", "unusual_volume"]
 
 # ======================================= Irish & European names, US-listed
 # These are European businesses whose primary or secondary listing is in the
@@ -170,7 +170,7 @@ signal_symbol = "CRH"
 trade_ticker = "CRH"
 trade_venue = "NYSE"
 trade_note = "Irish-founded building materials group; primary listing moved to the NYSE in 2023, so US data covers it."
-rules = ["trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d"]
+rules = ["earnings_today", "earnings_tomorrow", "trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d"]
 
 [[instrument]]
 id = "ryanair"
@@ -180,7 +180,7 @@ signal_symbol = "RYAAY"
 trade_ticker = "RYAAY"
 trade_venue = "Nasdaq"
 trade_note = "Nasdaq ADR. Revolut EEA also lists RYA on Euronext Dublin in EUR — the ADR is not 1:1 with the ordinary share, so pick one and stay with it."
-rules = ["trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d", "unusual_volume"]
+rules = ["earnings_today", "earnings_tomorrow", "trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d", "unusual_volume"]
 
 [[instrument]]
 id = "icon"
@@ -190,7 +190,7 @@ signal_symbol = "ICLR"
 trade_ticker = "ICLR"
 trade_venue = "Nasdaq"
 trade_note = "Dublin-headquartered clinical research group, Nasdaq-listed."
-rules = ["trend_regime", "oversold_dip", "drawdown_20pct", "big_move_1d", "near_52w_low"]
+rules = ["earnings_today", "earnings_tomorrow", "trend_regime", "oversold_dip", "drawdown_20pct", "big_move_1d", "near_52w_low"]
 
 [[instrument]]
 id = "flutter"
@@ -200,7 +200,7 @@ signal_symbol = "FLUT"
 trade_ticker = "FLUT"
 trade_venue = "NYSE"
 trade_note = "Irish-headquartered; primary listing is now the NYSE."
-rules = ["trend_regime", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d"]
+rules = ["earnings_today", "earnings_tomorrow", "trend_regime", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d"]
 
 [[instrument]]
 id = "asml"
@@ -210,7 +210,7 @@ signal_symbol = "ASML"
 trade_ticker = "ASML"
 trade_venue = "Nasdaq"
 trade_note = "Nasdaq listing of the Dutch semiconductor equipment maker; ASML also trades as ASML on Euronext Amsterdam in EUR."
-rules = ["trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_5d", "vol_regime_shift"]
+rules = ["earnings_today", "earnings_tomorrow", "trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_5d", "vol_regime_shift"]
 
 # ==================================================================== crypto
 # Kraken and Coinbase are public and keyless and quote in EUR directly, so

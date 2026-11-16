@@ -98,6 +98,25 @@
       '<span class="rsi-value rsi-' + tone + '">' + v.toFixed(0) + "</span></span>";
   }
 
+  function daysUntil(isoDate) {
+    if (!isoDate) return null;
+    var t = Date.parse(isoDate + "T00:00:00Z");
+    if (isNaN(t)) return null;
+    // Computed client-side so the badge stays honest even if the published
+    // data is a few hours old.
+    return Math.round((t - Date.now()) / 86400000);
+  }
+
+  function earningsChip(s) {
+    var days = daysUntil(s.earnings_date);
+    if (days === null || days < 0 || days > 3) return "";
+    var label = days === 0 ? "EARNINGS TODAY"
+      : days === 1 ? "EARNINGS TMRW"
+      : "EARNINGS " + days + "D";
+    return '<span class="earn-chip' + (days <= 1 ? " earn-now" : "") + '">' +
+      label + "</span>";
+  }
+
   // ------------------------------------------------------------- rendering
 
   function renderSignals() {
@@ -152,6 +171,10 @@
     var sorted = withChange.slice().sort(function (a, b) { return a.change_1d - b.change_1d; });
     var worst = sorted[0], best = sorted[sorted.length - 1];
     var oversold = rows.filter(function (s) { return s.rsi14 !== null && s.rsi14 < 30; }).length;
+    var reporting = rows.filter(function (s) {
+      var d = daysUntil(s.earnings_date);
+      return d !== null && d >= 0 && d <= 5;
+    }).length;
 
     el("breadth").innerHTML = '<div class="breadth">' +
       tile("Up today", up + " / " + withChange.length, up === 0 ? "down" : "") +
@@ -159,6 +182,7 @@
       tile("Best", esc(best.name.split(" ")[0]) + " " + fmtPct(best.change_1d), pctClass(best.change_1d)) +
       tile("Weakest", esc(worst.name.split(" ")[0]) + " " + fmtPct(worst.change_1d), pctClass(worst.change_1d)) +
       tile("RSI under 30", String(oversold), oversold > 0 ? "down" : "") +
+      tile("Reporting", String(reporting) + (reporting === 1 ? " name" : " names"), reporting > 0 ? "earn" : "") +
       "</div>";
   }
 
@@ -202,7 +226,7 @@
           '<span class="inst-num"><span class="inst-price">' + fmtNum(s.close) + "</span>" +
             '<span class="inst-chg ' + pctClass(s.change_1d) + '">' + fmtPct(s.change_1d) + "</span></span>" +
         "</button>" +
-        '<div class="inst-meter">' + rsiMeter(s.rsi14) +
+        '<div class="inst-meter">' + rsiMeter(s.rsi14) + earningsChip(s) +
           '<span class="inst-dd">52wk ' + fmtPct(s.from_252d_high) + "</span></div>" +
         (open ? detail(s) : "") +
         "</div>";
@@ -230,6 +254,7 @@
       ["Volatility", s.realized_vol_20 === null ? "—" : (s.realized_vol_20 * 100).toFixed(0) + "% ann.", ""],
       ["From 52wk high", fmtPct(s.from_252d_high), pctClass(s.from_252d_high)]
     ];
+    if (s.earnings_when) rows.push(["Earnings", esc(s.earnings_when), "earn"]);
     var grid = rows.map(function (r) {
       return '<div class="dt"><span>' + esc(r[0]) + '</span><b class="' + r[2] + '">' + r[1] + "</b></div>";
     }).join("");

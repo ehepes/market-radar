@@ -22,6 +22,7 @@ from .models import Bar, Signal
 from .notify import build_notifiers, dispatch, in_quiet_hours
 from .portfolio import evaluate_holdings, sizing_for_instrument
 from .providers import MarketData
+from .providers.earnings import EarningsCalendar
 from .signals import EVALUATORS, evaluate, snapshot
 from .state import Store
 from . import dashboard
@@ -129,6 +130,14 @@ def cmd_run(args: argparse.Namespace) -> int:
         f"{len([i for i in config.instruments if i.enabled])} instruments."
     )
 
+    # One calendar fetch serves every instrument and every rule.
+    calendar = EarningsCalendar()
+    try:
+        calendar.fetch()
+    except Exception as exc:  # the radar must still run without a calendar
+        problems.append(f"earnings calendar unavailable: {exc}")
+    problems.extend(calendar.problems)
+
     signals: List[Signal] = []
     snapshots: List[Dict[str, object]] = []
 
@@ -138,10 +147,11 @@ def cmd_run(args: argparse.Namespace) -> int:
         bars = bars_by_instrument.get(inst.id)
         if not bars:
             continue
-        fired, rule_problems = evaluate(inst, bars, config.rules_for(inst))
+        events = calendar.for_symbol(inst.signal_symbol) if inst.trade_ticker else []
+        fired, rule_problems = evaluate(inst, bars, config.rules_for(inst), events)
         signals.extend(fired)
         problems.extend(rule_problems)
-        snap = snapshot(inst, bars)
+        snap = snapshot(inst, bars, events)
         snap["source"] = market.sources.get(inst.id, "unknown")
         snapshots.append(snap)
 
