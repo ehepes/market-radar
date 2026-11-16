@@ -254,11 +254,27 @@ def eval_pullback_to_ma(ctx: Context, rule: Rule) -> Optional[Signal]:
 
 
 def eval_drawdown_from_high(ctx: Context, rule: Rule) -> Optional[Signal]:
+    """Fires when price *enters* a drawdown, not every day it stays in one.
+
+    A drawdown is a lasting state, not an event: "down 60% from its high" can
+    stay true for a year. Alerting on the state would re-fire every cooldown
+    window until you muted the app, so this reports the crossing instead —
+    the same semantics as the RSI and volatility rules. The current depth is
+    always on the dashboard; the alert is for the moment it changes.
+
+    Set ``persist = true`` on the rule to get the old state behaviour.
+    """
     lookback = int(rule.param("lookback", 252))
     threshold = float(rule.param("pct", 10.0)) / 100.0
     drop = ind.pct_from_extreme(ctx.closes, lookback, high=True)
     if drop is None or drop > -threshold:
         return None
+
+    if not bool(rule.param("persist", False)) and len(ctx.closes) > 1:
+        previous = ind.pct_from_extreme(ctx.closes[:-1], lookback, high=True)
+        if previous is not None and previous <= -threshold:
+            return None
+
     window = ctx.closes[-lookback:]
     return _signal(
         ctx,
@@ -419,6 +435,11 @@ def eval_vol_regime(ctx: Context, rule: Rule) -> Optional[Signal]:
 
 
 def eval_near_extreme(ctx: Context, rule: Rule) -> Optional[Signal]:
+    """Fires on entering the zone near a 52-week extreme, not while sitting in it.
+
+    Same reasoning as the drawdown rule: an instrument can hug its high for
+    weeks. ``persist = true`` restores the continuous behaviour.
+    """
     lookback = int(rule.param("lookback", 252))
     within = float(rule.param("within_pct", 2.0)) / 100.0
     side = str(rule.param("side", "high")).lower()
@@ -426,6 +447,16 @@ def eval_near_extreme(ctx: Context, rule: Rule) -> Optional[Signal]:
     distance = ind.pct_from_extreme(ctx.closes, lookback, high=(side == "high"))
     if distance is None:
         return None
+
+    if not bool(rule.param("persist", False)) and len(ctx.closes) > 1:
+        previous = ind.pct_from_extreme(ctx.closes[:-1], lookback, high=(side == "high"))
+        if previous is not None:
+            already_in_zone = (
+                previous >= -within if side == "high" else previous <= within
+            )
+            if already_in_zone:
+                return None
+
     if side == "high" and distance >= -within:
         window = ctx.closes[-lookback:]
         return _signal(

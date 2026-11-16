@@ -8,6 +8,13 @@
 # Available kinds: ma_cross, rsi, breakout, pullback_to_ma,
 # drawdown_from_high, volume_spike, pct_move, macd_cross, bollinger_break,
 # vol_regime, near_extreme.
+#
+# EVENTS vs STATES. Most rules describe an event that happened on one bar.
+# drawdown_from_high and near_extreme describe a lasting condition instead —
+# "down 60% from its high" can stay true for a year. Those two therefore fire
+# only when price ENTERS the condition. Add `persist = true` to a rule to get
+# an alert every cooldown window for as long as it stays true; you almost
+# certainly do not want that. The current depth is always on the dashboard.
 
 # ------------------------------------------------------------------ trend
 

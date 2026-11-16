@@ -529,6 +529,53 @@ def check_portfolio_privacy() -> None:
     assert opted_in["totals"]["value"] == 1234.5
 
 
+def check_state_rules_fire_on_entry() -> None:
+    """Drawdown and 52-week-extreme rules alert on entry, not every day after."""
+    rule = Rule(id="dd", kind="drawdown_from_high", level="high",
+                params={"lookback": 60, "pct": 20.0})
+    inst = instrument(rules=["dd"])
+
+    # Rise to a peak, then fall through -20% and keep falling.
+    closes = [100.0 + i for i in range(40)]          # peak 139
+    price = closes[-1]
+    for _ in range(12):
+        price *= 0.97
+        closes.append(price)
+
+    fires = 0
+    first_fire_at = None
+    for end in range(41, len(closes) + 1):
+        signals, _ = evaluate(inst, bars_from(closes[:end]), [rule])
+        if signals:
+            fires += 1
+            first_fire_at = first_fire_at or end
+    assert fires == 1, (
+        f"a drawdown must alert once on entry, not every day it persists "
+        f"(fired {fires} times from bar {first_fire_at})"
+    )
+
+    # persist = true restores the old continuous behaviour for anyone who wants it.
+    sticky = Rule(id="dd", kind="drawdown_from_high", level="high",
+                  params={"lookback": 60, "pct": 20.0, "persist": True})
+    sticky_fires = sum(
+        len(evaluate(inst, bars_from(closes[:end]), [sticky])[0])
+        for end in range(41, len(closes) + 1)
+    )
+    assert sticky_fires > 1, "persist = true should keep firing while true"
+
+    # Same contract for the 52-week-extreme rule.
+    near = Rule(id="ne", kind="near_extreme", level="info",
+                params={"lookback": 60, "within_pct": 2.0, "side": "high"})
+    rising = [100.0 + i * 0.5 for i in range(60)]
+    near_fires = sum(
+        len(evaluate(instrument(rules=["ne"]), bars_from(rising[:end]), [near])[0])
+        for end in range(40, len(rising) + 1)
+    )
+    assert near_fires <= 1, (
+        f"near_extreme fired {near_fires} times while price simply kept rising"
+    )
+
+
 CHECKS: List[Tuple[str, Callable[[], None]]] = [
     ("indicators", check_indicators),
     ("moving-average cross fires once", check_ma_cross_fires_on_the_cross),
@@ -545,6 +592,7 @@ CHECKS: List[Tuple[str, Callable[[], None]]] = [
     ("bar parsing edge cases", check_bar_parsing),
     ("dashboard payload", check_dashboard_payload),
     ("position privacy on a public dashboard", check_portfolio_privacy),
+    ("state rules fire on entry only", check_state_rules_fire_on_entry),
     ("shipped config validates", check_shipped_config),
 ]
 

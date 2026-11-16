@@ -148,7 +148,12 @@ default.
 | `near_extreme` | Within N% of a 52-week extreme | `lookback`, `within_pct`, `side` |
 
 Threshold rules fire on the **crossing bar only**, not every day the condition
-stays true. Combined with the cooldown, that is what keeps the volume sane.
+stays true. That includes `drawdown_from_high` and `near_extreme`, which
+describe lasting states rather than events: they alert when price *enters* the
+condition, because "down 60% from its high" can stay true for a year and would
+otherwise re-alert every cooldown window until you muted the app. Pass
+`persist = true` to opt back into continuous firing. Combined with the
+cooldown, this is what keeps the volume sane.
 
 ## How the noise is controlled
 
