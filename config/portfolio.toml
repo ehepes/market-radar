@@ -1,0 +1,23 @@
+# Market Radar — your open positions
+#
+# Add a [[holding]] per position you actually hold. The engine then alerts you
+# when YOUR OWN stop, target or trailing stop is reached, and warns when a
+# position grows past the concentration cap in radar.toml.
+#
+# instrument_id must match an id in watchlist.toml.
+# Prices are in the currency you bought in.
+#
+# Nothing here is required — leave the file empty and the engine simply runs
+# as a watchlist. Stops and targets are yours to choose; the engine never
+# invents them.
+
+# [[holding]]
+# instrument_id = "sp500"
+# quantity = 12
+# entry_price = 540.50
+# entry_currency = "EUR"
+# stop = 486.00              # fires at level "critical"
+# target = 620.00            # fires at level "high"
+# trailing_stop_pct = 12.0   # fires if it falls 12% from its peak since entry
+# opened = "2026-03-14"
+# note = "core holding, long horizon"

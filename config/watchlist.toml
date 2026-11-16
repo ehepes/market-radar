@@ -1,0 +1,267 @@
+# Market Radar — watchlist
+#
+# WHY EACH ENTRY HAS TWO SYMBOLS
+# ------------------------------
+# signal_symbol = where the price data comes from.
+# trade_ticker / trade_isin = what you can actually buy in Revolut Ireland.
+#
+# These differ for index funds, for two independent reasons:
+#
+#   1. Revolut Ireland is served by Revolut Securities Europe UAB. EEA retail
+#      investors cannot buy US-domiciled ETFs (SPY, QQQ, VOO) at all, because
+#      those funds do not publish a PRIIPs KID. You buy the EU-listed UCITS
+#      equivalent instead.
+#   2. Free market data covers US-listed symbols well and EU venues badly.
+#      Twelve Data's free tier is US equities, ETFs, forex and crypto only;
+#      Xetra and Euronext need a $79/month plan.
+#
+# So the engine measures the liquid US-listed proxy and tells you the UCITS
+# instrument to buy. Both track the same index, so trend and momentum signals
+# carry over. What does NOT carry over is currency: a EUR-denominated share
+# class of a USD index also moves with EUR/USD. The eurusd entry below tracks
+# that separately.
+#
+# Individual US-listed shares need no proxy — Revolut offers 1,500+ of them
+# directly, so signal_symbol and trade_ticker are the same.
+#
+# ALWAYS verify availability in the Revolut app by ISIN before trading. ISINs
+# here are the standard UCITS equivalents, not a confirmation that your
+# account tier can buy them today.
+
+# =============================================================== core index
+
+[[instrument]]
+id = "sp500"
+name = "S&P 500"
+asset_class = "etf"
+signal_symbol = "SPY"
+trade_ticker = "SXR8"
+trade_isin = "IE00B5BMR087"
+trade_venue = "Xetra"
+trade_currency = "EUR"
+trade_note = "iShares Core S&P 500 UCITS ETF (Acc). Also listed as CSPX. US-listed SPY is not available to EEA retail."
+rules = ["trend_regime", "pullback_to_50", "oversold_dip", "correction_10pct", "drawdown_20pct", "big_move_1d", "vol_regime_shift", "near_52w_high"]
+
+[[instrument]]
+id = "world"
+name = "MSCI World"
+asset_class = "etf"
+signal_symbol = "URTH"
+trade_ticker = "EUNL"
+trade_isin = "IE00B4L5Y983"
+trade_venue = "Xetra"
+trade_currency = "EUR"
+trade_note = "iShares Core MSCI World UCITS ETF (Acc). Also listed as IWDA on Euronext Amsterdam."
+rules = ["trend_regime", "pullback_to_50", "correction_10pct", "drawdown_20pct", "big_move_1d"]
+
+[[instrument]]
+id = "allworld"
+name = "FTSE All-World"
+asset_class = "etf"
+signal_symbol = "VT"
+trade_ticker = "VWCE"
+trade_isin = "IE00BK5BQT80"
+trade_venue = "Xetra"
+trade_currency = "EUR"
+trade_note = "Vanguard FTSE All-World UCITS ETF (Acc). Includes emerging markets, unlike MSCI World."
+rules = ["trend_regime", "pullback_to_50", "correction_10pct", "drawdown_20pct"]
+
+[[instrument]]
+id = "nasdaq100"
+name = "Nasdaq 100"
+asset_class = "etf"
+signal_symbol = "QQQ"
+trade_ticker = "SXRV"
+trade_isin = "IE00B53SZB19"
+trade_venue = "Xetra"
+trade_currency = "EUR"
+trade_note = "iShares Nasdaq 100 UCITS ETF (Acc), also listed as CNDX. Invesco EQQQ (IE0032077012) is the common alternative."
+rules = ["trend_regime", "pullback_to_50", "oversold_dip", "overbought", "correction_10pct", "drawdown_20pct", "big_move_1d", "vol_regime_shift"]
+
+[[instrument]]
+id = "eurostoxx50"
+name = "Euro Stoxx 50"
+asset_class = "etf"
+signal_symbol = "FEZ"
+trade_ticker = "CSSX5E"
+trade_isin = "IE00B53L3W79"
+trade_venue = "Xetra"
+trade_currency = "EUR"
+trade_note = "iShares Core EURO STOXX 50 UCITS ETF (Acc). EUR-denominated index, so no currency mismatch for you."
+rules = ["trend_regime", "pullback_to_50", "oversold_dip", "correction_10pct", "big_move_1d"]
+
+[[instrument]]
+id = "gold"
+name = "Gold"
+asset_class = "etf"
+signal_symbol = "GLD"
+trade_ticker = "IGLN"
+trade_isin = "IE00B4ND3602"
+trade_venue = "Xetra / LSE"
+trade_currency = "EUR"
+trade_note = "iShares Physical Gold ETC — an ETC, not a UCITS ETF. Revolut also sells gold directly as a commodity; check which route your account offers."
+rules = ["trend_regime", "breakout_20d", "correction_10pct", "big_move_1d", "near_52w_high"]
+
+# ============================================================ currency risk
+
+[[instrument]]
+id = "eurusd"
+name = "EUR/USD"
+asset_class = "equity"
+signal_symbol = "EUR/USD"
+trade_ticker = "EUR/USD"
+trade_note = "Not something to trade here — tracked because it moves the EUR value of every USD-denominated holding above. Forex is on Twelve Data's free tier."
+rules = ["trend_regime", "big_move_1d", "vol_regime_shift"]
+
+# ========================================================= US-listed shares
+# Revolut Ireland offers these directly, so there is no proxy mapping.
+
+[[instrument]]
+id = "aapl"
+name = "Apple"
+asset_class = "equity"
+signal_symbol = "AAPL"
+trade_ticker = "AAPL"
+rules = ["trend_regime", "pullback_to_50", "oversold_dip", "overbought", "breakout_20d", "drawdown_20pct", "big_move_1d", "unusual_volume", "momentum_turn"]
+
+[[instrument]]
+id = "msft"
+name = "Microsoft"
+asset_class = "equity"
+signal_symbol = "MSFT"
+trade_ticker = "MSFT"
+rules = ["trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d", "unusual_volume"]
+
+[[instrument]]
+id = "nvda"
+name = "Nvidia"
+asset_class = "equity"
+signal_symbol = "NVDA"
+trade_ticker = "NVDA"
+trade_note = "High realised volatility; the 5% daily-move rule will fire often here."
+rules = ["trend_regime", "pullback_to_50", "oversold_dip", "overbought", "breakout_20d", "drawdown_20pct", "big_move_5d", "unusual_volume", "vol_regime_shift"]
+
+[[instrument]]
+id = "googl"
+name = "Alphabet"
+asset_class = "equity"
+signal_symbol = "GOOGL"
+trade_ticker = "GOOGL"
+rules = ["trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d", "unusual_volume"]
+
+[[instrument]]
+id = "amzn"
+name = "Amazon"
+asset_class = "equity"
+signal_symbol = "AMZN"
+trade_ticker = "AMZN"
+rules = ["trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d", "unusual_volume"]
+
+# ======================================= Irish & European names, US-listed
+# These are European businesses whose primary or secondary listing is in the
+# US, which means free data AND direct availability on Revolut. The best of
+# both constraints.
+
+[[instrument]]
+id = "crh"
+name = "CRH"
+asset_class = "equity"
+signal_symbol = "CRH"
+trade_ticker = "CRH"
+trade_venue = "NYSE"
+trade_note = "Irish-founded building materials group; primary listing moved to the NYSE in 2023, so US data covers it."
+rules = ["trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d"]
+
+[[instrument]]
+id = "ryanair"
+name = "Ryanair"
+asset_class = "equity"
+signal_symbol = "RYAAY"
+trade_ticker = "RYAAY"
+trade_venue = "Nasdaq"
+trade_note = "Nasdaq ADR. Revolut EEA also lists RYA on Euronext Dublin in EUR — the ADR is not 1:1 with the ordinary share, so pick one and stay with it."
+rules = ["trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d", "unusual_volume"]
+
+[[instrument]]
+id = "icon"
+name = "ICON plc"
+asset_class = "equity"
+signal_symbol = "ICLR"
+trade_ticker = "ICLR"
+trade_venue = "Nasdaq"
+trade_note = "Dublin-headquartered clinical research group, Nasdaq-listed."
+rules = ["trend_regime", "oversold_dip", "drawdown_20pct", "big_move_1d", "near_52w_low"]
+
+[[instrument]]
+id = "flutter"
+name = "Flutter Entertainment"
+asset_class = "equity"
+signal_symbol = "FLUT"
+trade_ticker = "FLUT"
+trade_venue = "NYSE"
+trade_note = "Irish-headquartered; primary listing is now the NYSE."
+rules = ["trend_regime", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_1d"]
+
+[[instrument]]
+id = "asml"
+name = "ASML"
+asset_class = "equity"
+signal_symbol = "ASML"
+trade_ticker = "ASML"
+trade_venue = "Nasdaq"
+trade_note = "Nasdaq listing of the Dutch semiconductor equipment maker; ASML also trades as ASML on Euronext Amsterdam in EUR."
+rules = ["trend_regime", "pullback_to_50", "oversold_dip", "breakout_20d", "drawdown_20pct", "big_move_5d", "vol_regime_shift"]
+
+# ==================================================================== crypto
+# Kraken and Coinbase are public and keyless and quote in EUR directly, so
+# crypto costs no API credits. Revolut Ireland offers 200+ coins.
+
+[[instrument]]
+id = "btc"
+name = "Bitcoin"
+asset_class = "crypto"
+signal_symbol = "BTC-EUR"
+signal_provider = "kraken"
+trade_ticker = "BTC"
+trade_currency = "EUR"
+trade_note = "Revolut crypto fees run up to 1.49% depending on plan — far higher than its equity commissions. Factor that into any short-horizon idea."
+rules = ["trend_regime", "crypto_big_move_1d", "crypto_drawdown_25pct", "crypto_oversold", "crypto_vol_regime", "breakout_20d", "near_52w_high"]
+
+[[instrument]]
+id = "eth"
+name = "Ethereum"
+asset_class = "crypto"
+signal_symbol = "ETH-EUR"
+signal_provider = "kraken"
+trade_ticker = "ETH"
+trade_currency = "EUR"
+rules = ["trend_regime", "crypto_big_move_1d", "crypto_drawdown_25pct", "crypto_oversold", "crypto_vol_regime", "breakout_20d"]
+
+[[instrument]]
+id = "sol"
+name = "Solana"
+asset_class = "crypto"
+signal_symbol = "SOL-EUR"
+signal_provider = "kraken"
+trade_ticker = "SOL"
+trade_currency = "EUR"
+rules = ["trend_regime", "crypto_big_move_1d", "crypto_drawdown_25pct", "crypto_oversold", "breakout_20d"]
+
+# =================================================== example: a real EU line
+# Disabled by default. Enable only if you add an ALPHAVANTAGE_API_KEY secret:
+# its free tier is ~25 requests/day, which is enough for a couple of EU-listed
+# symbols but not a whole watchlist. Suffixes: .LON .DEX .PAR .AMS .MIL .MAD
+
+[[instrument]]
+id = "sxr8_direct"
+name = "iShares Core S&P 500 (Xetra line)"
+asset_class = "etf"
+signal_symbol = "SXR8.DEX"
+signal_provider = "alphavantage"
+enabled = false
+trade_ticker = "SXR8"
+trade_isin = "IE00B5BMR087"
+trade_venue = "Xetra"
+trade_currency = "EUR"
+trade_note = "The actual EUR line, rather than the SPY proxy. Use this to sanity-check that the proxy tracks what you are buying."
+rules = ["trend_regime", "big_move_1d"]

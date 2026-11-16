@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.DS_Store
+.pytest_cache/
+# The state DB IS committed on purpose: it carries alert cooldowns and signal
+# history between CI runs. Local scratch copies are not.
+state/local*.db

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Market Radar</title>
+<meta name="description" content="Rule-based market monitoring with Revolut-Ireland instrument mapping.">
+<meta name="theme-color" content="#0b0f14" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f8fa" media="(prefers-color-scheme: light)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Radar">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-row">
+    <h1>Market Radar</h1>
+    <button id="refresh" class="ghost" type="button" aria-label="Reload data">Reload</button>
+  </div>
+  <p id="updated" class="muted">Loading…</p>
+</header>
+
+<main id="main" hidden>
+  <section id="alert-strip" class="strip" hidden></section>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab is-active" data-panel="signals" role="tab">Signals</button>
+    <button class="tab" data-panel="watchlist" role="tab">Watchlist</button>
+    <button class="tab" data-panel="positions" role="tab">Positions</button>
+    <button class="tab" data-panel="history" role="tab">History</button>
+  </nav>
+
+  <section id="panel-signals" class="panel" role="tabpanel">
+    <div id="signals"></div>
+  </section>
+
+  <section id="panel-watchlist" class="panel" role="tabpanel" hidden>
+    <div class="filters">
+      <button class="chip is-active" data-class="all">All</button>
+      <button class="chip" data-class="etf">Index / ETF</button>
+      <button class="chip" data-class="equity">Shares</button>
+      <button class="chip" data-class="crypto">Crypto</button>
+    </div>
+    <div id="watchlist"></div>
+  </section>
+
+  <section id="panel-positions" class="panel" role="tabpanel" hidden>
+    <div id="totals"></div>
+    <div id="positions"></div>
+  </section>
+
+  <section id="panel-history" class="panel" role="tabpanel" hidden>
+    <div id="history"></div>
+  </section>
+
+  <section id="diagnostics" class="panel diagnostics" hidden>
+    <details>
+      <summary>Data problems <span id="problem-count" class="pill"></span></summary>
+      <ul id="problems"></ul>
+    </details>
+  </section>
+
+  <footer class="disclaimer">
+    <p><strong>This is a tripwire, not advice.</strong> Every item here is a rule
+    you configured firing on past price data. Nothing on this page is a
+    recommendation, a forecast, or a reason on its own to buy or sell. No orders
+    are placed anywhere — Revolut has no retail trading API, so you execute
+    everything yourself, deliberately.</p>
+    <p class="muted">Signals are measured on the symbol named under each item.
+    Where that differs from what you can buy in Revolut Ireland, the tradeable
+    instrument and its ISIN are shown. Verify availability in the app before
+    trading.</p>
+  </footer>
+</main>
+
+<div id="error" class="error" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>

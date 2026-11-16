@@ -1,0 +1,185 @@
+# Market Radar — rule definitions
+#
+# Each rule is a tripwire with a severity. Attach rules to instruments in
+# watchlist.toml. Levels, in order: info, low, medium, high, critical.
+# Pushover maps high -> bypasses your phone's silent mode, critical ->
+# repeats until you acknowledge it.
+#
+# Available kinds: ma_cross, rsi, breakout, pullback_to_ma,
+# drawdown_from_high, volume_spike, pct_move, macd_cross, bollinger_break,
+# vol_regime, near_extreme.
+
+# ------------------------------------------------------------------ trend
+
+[[rule]]
+id = "trend_regime"
+kind = "ma_cross"
+label = "50/200-day trend change"
+level = "high"
+fast = 50
+slow = 200
+direction = "both"
+
+[[rule]]
+id = "momentum_turn"
+kind = "macd_cross"
+label = "MACD turn"
+level = "low"
+fast = 12
+slow = 26
+signal = 9
+direction = "both"
+
+# ------------------------------------------------------- entries / pullbacks
+
+[[rule]]
+id = "pullback_to_50"
+kind = "pullback_to_ma"
+label = "Pullback to the 50-day in an uptrend"
+level = "medium"
+period = 50
+tolerance_pct = 2.0
+trend_period = 200
+
+[[rule]]
+id = "oversold_dip"
+kind = "rsi"
+label = "RSI dropped below 30"
+level = "medium"
+period = 14
+below = 30
+
+[[rule]]
+id = "overbought"
+kind = "rsi"
+label = "RSI rose above 75"
+level = "low"
+period = 14
+above = 75
+
+# -------------------------------------------------------------- breakouts
+
+[[rule]]
+id = "breakout_20d"
+kind = "breakout"
+label = "Broke its 20-day high"
+level = "medium"
+period = 20
+direction = "up"
+
+[[rule]]
+id = "breakdown_20d"
+kind = "breakout"
+label = "Broke its 20-day low"
+level = "medium"
+period = 20
+direction = "down"
+
+[[rule]]
+id = "near_52w_high"
+kind = "near_extreme"
+label = "Near its 52-week high"
+level = "info"
+lookback = 252
+within_pct = 2.0
+side = "high"
+
+[[rule]]
+id = "near_52w_low"
+kind = "near_extreme"
+label = "Near its 52-week low"
+level = "medium"
+lookback = 252
+within_pct = 3.0
+side = "low"
+
+# ------------------------------------------------------------- drawdowns
+
+[[rule]]
+id = "correction_10pct"
+kind = "drawdown_from_high"
+label = "10% off its 52-week high"
+level = "medium"
+lookback = 252
+pct = 10.0
+
+[[rule]]
+id = "drawdown_20pct"
+kind = "drawdown_from_high"
+label = "20% off its 52-week high"
+level = "high"
+lookback = 252
+pct = 20.0
+
+# ------------------------------------------------------------- shock moves
+
+[[rule]]
+id = "big_move_1d"
+kind = "pct_move"
+label = "Moved more than 5% in a day"
+level = "medium"
+days = 1
+pct = 5.0
+direction = "both"
+
+[[rule]]
+id = "big_move_5d"
+kind = "pct_move"
+label = "Moved more than 10% in a week"
+level = "medium"
+days = 5
+pct = 10.0
+direction = "both"
+
+[[rule]]
+id = "unusual_volume"
+kind = "volume_spike"
+label = "Unusual trading volume"
+level = "low"
+period = 20
+z = 3.0
+
+[[rule]]
+id = "vol_regime_shift"
+kind = "vol_regime"
+label = "Volatility regime shift"
+level = "medium"
+period = 20
+above_pct = 40.0
+
+# ------------------------------------------------- crypto-specific thresholds
+# Crypto moves far more than equities, so the same thresholds would fire
+# constantly. These are deliberately wider.
+
+[[rule]]
+id = "crypto_big_move_1d"
+kind = "pct_move"
+label = "Crypto moved more than 8% in a day"
+level = "medium"
+days = 1
+pct = 8.0
+direction = "both"
+
+[[rule]]
+id = "crypto_drawdown_25pct"
+kind = "drawdown_from_high"
+label = "Crypto 25% off its yearly high"
+level = "medium"
+lookback = 252
+pct = 25.0
+
+[[rule]]
+id = "crypto_vol_regime"
+kind = "vol_regime"
+label = "Crypto volatility spike"
+level = "low"
+period = 20
+above_pct = 90.0
+
+[[rule]]
+id = "crypto_oversold"
+kind = "rsi"
+label = "Crypto RSI below 25"
+level = "medium"
+period = 14
+below = 25

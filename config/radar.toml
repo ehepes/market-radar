@@ -1,0 +1,47 @@
+# Market Radar — engine settings
+# Everything in this file is yours to change. Nothing here is a recommendation.
+
+[engine]
+timezone = "Europe/Dublin"
+history_days = 400      # enough for a 200-day average plus a year of context
+min_bars = 60           # below this, long-window rules stay quiet rather than lie
+crypto_quote_currency = "EUR"
+
+[notify]
+# Channels to deliver through. "console" always works and shows up in CI logs.
+channels = ["pushover", "console"]
+
+# Severity floor. Raise to "medium" or "high" once you know what the noise
+# level feels like in practice. This is the single most useful dial here.
+min_level = "low"
+
+# Never alert about the same instrument+rule twice inside this window. A
+# 50/200 crossover stays true for weeks; without this you would mute the app.
+cooldown_hours = 48
+
+# Hard cap per run, so a market-wide selloff cannot produce 40 pushes.
+# Highest severity is always kept first.
+max_alerts_per_run = 8
+
+# Local quiet window. Held-back signals still appear on the dashboard and
+# will alert on the next run outside these hours.
+quiet_start = "22:30"
+quiet_end = "07:00"
+
+# Levels that ignore quiet hours. A breached stop is worth waking up for.
+always_send_levels = ["critical"]
+
+[dashboard]
+# A GitHub Pages site is PUBLIC on every plan below Enterprise. Position sizes,
+# entry prices and P/L are therefore withheld from the published dashboard by
+# default. Stop and target alerts still reach your phone either way.
+# Set true only if the repo and its site are genuinely private to you.
+include_positions = false
+
+[risk]
+# Used only for position-size arithmetic and concentration warnings.
+# Set account_size to 0 to switch both off.
+account_size = 0
+account_currency = "EUR"
+risk_per_trade_pct = 1.0     # max % of account you accept losing per position
+max_position_pct = 20.0      # max % of account in any single instrument

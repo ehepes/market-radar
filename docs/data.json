@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-11-16T00:00:00+00:00",
+  "generated_at_human": "awaiting first run",
+  "totals": {},
+  "positions": [],
+  "snapshots": [],
+  "signals_now": [],
+  "signals_recent": [],
+  "problems": ["No run has published data yet. Trigger the Market Radar workflow manually to populate this."],
+  "sources": {},
+  "sparklines": {},
+  "counts": { "instruments": 0, "signals_now": 0, "critical": 0, "high": 0 }
+}
