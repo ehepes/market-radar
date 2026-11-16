@@ -169,26 +169,140 @@ button:active { transform: scale(0.97); }
 
 /* ------------------------------------------------------------ watchlist */
 
-.row {
+/* Breadth tiles: the headline a market page owes you, above the detail. */
+.breadth {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 4px 12px;
-  align-items: center;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
+  grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+  gap: 7px;
+  margin-bottom: 14px;
 }
-.row:last-child { border-bottom: 0; }
-.row-name { font-weight: 600; font-size: 14.5px; }
-.row-sub { font-size: 12px; color: var(--muted); }
-.row-right { text-align: right; font-variant-numeric: tabular-nums; }
-.row-price { font-weight: 600; }
-.row-metrics { font-size: 12px; color: var(--muted); margin-top: 2px; }
-.row-spark { grid-column: 1 / -1; margin-top: 2px; }
+.tile {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 9px 11px;
+}
+.tile-label {
+  font-size: 10.5px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: .5px; white-space: nowrap;
+}
+.tile-value {
+  font-size: 15px; font-weight: 650; margin-top: 3px;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+
+.sort-wrap { margin-left: auto; }
+.sort-wrap select {
+  font: inherit; font-size: 13px; color: var(--text);
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 999px; padding: 5px 10px; cursor: pointer;
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+.hint { font-size: 12.5px; color: var(--muted); text-align: center; margin: 14px 0 0; }
+
+/* One instrument: a tappable summary that expands into full readings. */
+.inst {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+.inst.is-open { border-color: var(--accent); }
+
+.inst-head {
+  display: grid;
+  grid-template-columns: 1fr 74px auto;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 13px 8px;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  text-align: left;
+  color: inherit;
+}
+.inst-head:active { background: var(--surface-2); }
+
+.inst-id { min-width: 0; }
+.inst-name {
+  display: block; font-weight: 600; font-size: 14.5px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.inst-sub { display: block; font-size: 11.5px; color: var(--muted); margin-top: 1px; }
+.inst-spark { display: block; }
+.inst-num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.inst-price { display: block; font-weight: 600; font-size: 14.5px; }
+.inst-chg { display: block; font-size: 12.5px; margin-top: 1px; }
+
+.inst-meter {
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 13px 11px;
+}
+.inst-dd {
+  font-size: 11.5px; color: var(--muted);
+  font-variant-numeric: tabular-nums; margin-left: auto; white-space: nowrap;
+}
+
+/* RSI as a meter. A number means nothing to the eye; a marker near the
+   floor, inside a shaded oversold zone, means everything. */
+.rsi { display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0; }
+.rsi-label { font-size: 10px; color: var(--muted); letter-spacing: .5px; }
+.rsi-track {
+  position: relative; flex: 1; min-width: 46px; height: 5px;
+  background: var(--surface-2); border-radius: 3px;
+}
+.rsi-zone { position: absolute; top: 0; bottom: 0; }
+.rsi-zone-low  { left: 0;   width: 30%; background: var(--down); opacity: .18; border-radius: 3px 0 0 3px; }
+.rsi-zone-high { right: 0;  width: 30%; background: var(--up);   opacity: .18; border-radius: 0 3px 3px 0; }
+.rsi-mark {
+  position: absolute; top: 50%; width: 3px; height: 11px;
+  margin-left: -1.5px; transform: translateY(-50%);
+  border-radius: 2px; background: var(--text);
+  box-shadow: 0 0 0 2px var(--surface);
+}
+.rsi-mark.rsi-low  { background: var(--down); }
+.rsi-mark.rsi-high { background: var(--up); }
+.rsi-value {
+  font-size: 11.5px; font-variant-numeric: tabular-nums;
+  min-width: 18px; text-align: right; color: var(--muted);
+}
+.rsi-value.rsi-low  { color: var(--down); font-weight: 600; }
+.rsi-value.rsi-high { color: var(--up);   font-weight: 600; }
+
+/* Expanded detail */
+.inst-detail { padding: 2px 13px 13px; border-top: 1px solid var(--border); margin-top: 2px; }
+.dt-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+  gap: 1px 14px; margin: 10px 0;
+}
+.dt {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--rule, var(--border));
+  font-size: 13px;
+}
+.dt span { color: var(--muted); }
+.dt b { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+svg.spark { display: block; width: 100%; height: 30px; overflow: visible; }
+
+/* History rows */
+.hist {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--border);
+}
+.hist:last-child { border-bottom: 0; }
+.hist-head { font-size: 14px; font-weight: 600; }
+.hist-when { font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+.pushed { color: var(--accent); font-weight: 600; }
 
 .up { color: var(--up); }
 .down { color: var(--down); }
 
-svg.spark { display: block; width: 100%; height: 26px; overflow: visible; }
 
 /* ------------------------------------------------------------ positions */
 

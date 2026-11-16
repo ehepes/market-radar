@@ -551,6 +551,7 @@ def snapshot(inst: Instrument, bars: Sequence[Bar]) -> Dict[str, object]:
         "trade_ticker": inst.trade_ticker,
         "trade_isin": inst.trade_isin,
         "trade_venue": inst.trade_venue,
+        "trade_note": inst.trade_note,
         "is_proxy": inst.is_proxy,
         "as_of": ctx.last_day,
         "close": round(ctx.close, 4),

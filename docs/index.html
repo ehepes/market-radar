@@ -39,13 +39,24 @@
   </section>
 
   <section id="panel-watchlist" class="panel" role="tabpanel" hidden>
+    <div id="breadth"></div>
     <div class="filters">
       <button class="chip is-active" data-class="all">All</button>
       <button class="chip" data-class="etf">Index / ETF</button>
       <button class="chip" data-class="equity">Shares</button>
       <button class="chip" data-class="crypto">Crypto</button>
+      <label class="sort-wrap">
+        <span class="sr-only">Sort by</span>
+        <select id="sort" aria-label="Sort watchlist">
+          <option value="move">Biggest fall</option>
+          <option value="rsi">Lowest RSI</option>
+          <option value="drawdown">Furthest from high</option>
+          <option value="name">Name</option>
+        </select>
+      </label>
     </div>
     <div id="watchlist"></div>
+    <p class="hint">Tap any instrument for its full readings and what to buy.</p>
   </section>
 
   <section id="panel-positions" class="panel" role="tabpanel" hidden>

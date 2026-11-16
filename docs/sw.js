@@ -5,7 +5,7 @@
  * current would be worse than showing nothing.
  */
 
-var CACHE = "radar-v1";
+var CACHE = "radar-v2";  // bump on any shell change, or phones serve the old app.js from cache
 var SHELL = ["./", "index.html", "styles.css", "app.js", "manifest.webmanifest", "icon.svg"];
 
 self.addEventListener("install", function (event) {
