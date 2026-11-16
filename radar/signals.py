@@ -516,11 +516,15 @@ def eval_earnings_soon(ctx: Context, rule: Rule) -> Optional[Signal]:
         context_bits.append(f"{_pct(drop)} from its 52-week high")
     context = ", ".join(context_bits)
 
-    headline = (
-        f"Reports earnings TODAY {event.when_text}"
-        if days == 0
-        else f"Reports earnings {event.describe()}"
-    )
+    # describe() is a full clause ("reports TOMORROW after the US close") meant
+    # to follow a company name, so the headline builds its own phrasing rather
+    # than prefixing it and reading "Reports earnings reports TOMORROW".
+    if days == 0:
+        headline = f"Reports earnings TODAY {event.when_text}"
+    elif days == 1:
+        headline = f"Reports earnings TOMORROW {event.when_text}"
+    else:
+        headline = f"Reports earnings in {days} days ({event.day.isoformat()})"
     detail = (
         f"{ctx.inst.name} {event.describe()}. Last close {_fmt(ctx.close)}"
         + (f" ({context})." if context else ".")

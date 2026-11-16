@@ -596,10 +596,22 @@ def check_earnings_rule() -> None:
     signals, problems = evaluate(inst, bars_from(closes), [rule], today_event)
     assert not problems and len(signals) == 1, f"expected 1 signal, got {signals}"
     assert "TODAY" in signals[0].headline, signals[0].headline
+    # describe() is a full clause; prefixing it produced "Reports earnings
+    # reports TOMORROW" in the first live run. Guard the phrasing, not just
+    # the presence of a word.
+    assert "earnings reports" not in signals[0].headline.lower(), (
+        f"doubled verb in headline: {signals[0].headline}"
+    )
     assert "after the US close" in signals[0].detail, signals[0].detail
     assert signals[0].level == "high"
 
     # Too far out -> silent at within_days=1.
+    tomorrow_rule = Rule(id="e", kind="earnings_soon", params={"within_days": 1})
+    tom = [EarningsEvent("NVDA", today + timedelta(days=1), "time-after-hours")]
+    tom_sig = evaluate(inst, bars_from(closes), [tomorrow_rule], tom)[0][0]
+    assert "TOMORROW" in tom_sig.headline
+    assert "earnings reports" not in tom_sig.headline.lower(), tom_sig.headline
+
     far = [EarningsEvent("NVDA", today + timedelta(days=5), "time-pre-market")]
     assert not evaluate(inst, bars_from(closes), [rule], far)[0], (
         "an event 5 days out must not fire a 1-day rule"
