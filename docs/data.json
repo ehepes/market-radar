@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-21T17:06:30+00:00",
-  "generated_at_human": "21 Nov 2026, 17:06 UTC",
+  "generated_at": "2026-11-22T17:37:25+00:00",
+  "generated_at_human": "22 Nov 2026, 17:37 UTC",
   "timezone": "Europe/Dublin",
   "totals": {
     "withheld": true,
@@ -127,17 +127,17 @@
       "trade_venue": null,
       "trade_note": "Revolut crypto fees run up to 1.49% depending on plan \u2014 far higher than its equity commissions. Factor that into any short-horizon idea.",
       "is_proxy": true,
-      "as_of": "2026-11-21",
-      "close": 54876.9,
-      "change_1d": 0.0222,
-      "change_5d": -0.0695,
-      "change_21d": -0.2097,
-      "sma50": 69120.29,
-      "sma200": 63361.899,
-      "rsi14": 23.7027,
-      "atr14": 2731.1805,
-      "realized_vol_20": 0.4111,
-      "from_252d_high": -0.2863,
+      "as_of": "2026-11-22",
+      "close": 55532.2,
+      "change_1d": 0.0118,
+      "change_5d": -0.0592,
+      "change_21d": -0.2088,
+      "sma50": 68724.186,
+      "sma200": 63293.0035,
+      "rsi14": 26.6187,
+      "atr14": 2725.339,
+      "realized_vol_20": 0.417,
+      "from_252d_high": -0.2777,
       "bars": 400,
       "earnings_date": null,
       "earnings_when": null,
@@ -181,16 +181,16 @@
       "trade_venue": null,
       "trade_note": "Not something to trade here \u2014 tracked because it moves the EUR value of every USD-denominated holding above. Forex is on Twelve Data's free tier.",
       "is_proxy": false,
-      "as_of": "2026-11-21",
+      "as_of": "2026-11-22",
       "close": 1.097,
-      "change_1d": 0.0,
-      "change_5d": -0.0031,
-      "change_21d": -0.0172,
-      "sma50": 1.1155,
-      "sma200": 1.1437,
-      "rsi14": 29.3483,
-      "atr14": 0.0053,
-      "realized_vol_20": 0.0537,
+      "change_1d": 0.0002,
+      "change_5d": -0.0035,
+      "change_21d": -0.017,
+      "sma50": 1.115,
+      "sma200": 1.1434,
+      "rsi14": 29.6539,
+      "atr14": 0.005,
+      "realized_vol_20": 0.0519,
       "from_252d_high": -0.0703,
       "bars": 400,
       "earnings_date": null,
@@ -208,17 +208,17 @@
       "trade_venue": null,
       "trade_note": null,
       "is_proxy": true,
-      "as_of": "2026-11-21",
-      "close": 1538.69,
-      "change_1d": 0.0407,
-      "change_5d": -0.0703,
-      "change_21d": -0.2382,
-      "sma50": 2029.46,
-      "sma200": 1859.3092,
-      "rsi14": 27.5159,
-      "atr14": 101.038,
-      "realized_vol_20": 0.6114,
-      "from_252d_high": -0.365,
+      "as_of": "2026-11-22",
+      "close": 1564.3,
+      "change_1d": 0.0182,
+      "change_5d": -0.0569,
+      "change_21d": -0.2325,
+      "sma50": 2012.9174,
+      "sma200": 1857.1126,
+      "rsi14": 30.3646,
+      "atr14": 99.276,
+      "realized_vol_20": 0.6198,
+      "from_252d_high": -0.3544,
       "bars": 400,
       "earnings_date": null,
       "earnings_when": null,
@@ -532,17 +532,17 @@
       "trade_venue": null,
       "trade_note": null,
       "is_proxy": true,
-      "as_of": "2026-11-21",
-      "close": 64.58,
-      "change_1d": 0.0293,
-      "change_5d": -0.0074,
-      "change_21d": -0.2442,
-      "sma50": 86.1594,
-      "sma200": 77.3748,
-      "rsi14": 29.6857,
-      "atr14": 4.3028,
-      "realized_vol_20": 0.5833,
-      "from_252d_high": -0.402,
+      "as_of": "2026-11-22",
+      "close": 64.28,
+      "change_1d": 0.0028,
+      "change_5d": -0.0593,
+      "change_21d": -0.241,
+      "sma50": 85.3088,
+      "sma200": 77.3143,
+      "rsi14": 28.9773,
+      "atr14": 4.1676,
+      "realized_vol_20": 0.576,
+      "from_252d_high": -0.4048,
       "bars": 400,
       "earnings_date": null,
       "earnings_when": null,
@@ -562,7 +562,7 @@
         "rsi": 24.9082,
         "threshold": 30.0
       },
-      "fired_at": "2026-11-21T17:06:30+00:00"
+      "fired_at": "2026-11-22T17:37:25+00:00"
     },
     {
       "instrument_id": "sp500",
@@ -576,7 +576,7 @@
         "drawdown": -0.1146,
         "period_high": 779.09
       },
-      "fired_at": "2026-11-21T17:06:30+00:00"
+      "fired_at": "2026-11-22T17:37:25+00:00"
     },
     {
       "instrument_id": "world",
@@ -590,7 +590,7 @@
         "drawdown": -0.1138,
         "period_high": 211.51
       },
-      "fired_at": "2026-11-21T17:06:30+00:00"
+      "fired_at": "2026-11-22T17:37:25+00:00"
     },
     {
       "instrument_id": "allworld",
@@ -604,7 +604,7 @@
         "drawdown": -0.1251,
         "period_high": 162.39
       },
-      "fired_at": "2026-11-21T17:06:30+00:00"
+      "fired_at": "2026-11-22T17:37:25+00:00"
     },
     {
       "instrument_id": "nasdaq100",
@@ -618,7 +618,7 @@
         "rsi": 26.6319,
         "threshold": 30.0
       },
-      "fired_at": "2026-11-21T17:06:30+00:00"
+      "fired_at": "2026-11-22T17:37:25+00:00"
     },
     {
       "instrument_id": "nasdaq100",
@@ -632,7 +632,7 @@
         "change": -0.0567,
         "days": 1
       },
-      "fired_at": "2026-11-21T17:06:30+00:00"
+      "fired_at": "2026-11-22T17:37:25+00:00"
     },
     {
       "instrument_id": "eurostoxx50",
@@ -646,7 +646,7 @@
         "rsi": 29.6216,
         "threshold": 30.0
       },
-      "fired_at": "2026-11-21T17:06:30+00:00"
+      "fired_at": "2026-11-22T17:37:25+00:00"
     },
     {
       "instrument_id": "aapl",
@@ -660,7 +660,7 @@
         "ma": 341.8072,
         "distance": 0.0022
       },
-      "fired_at": "2026-11-21T17:06:30+00:00"
+      "fired_at": "2026-11-22T17:37:25+00:00"
     },
     {
       "instrument_id": "nvda",
@@ -674,7 +674,7 @@
         "change": -0.2292,
         "days": 5
       },
-      "fired_at": "2026-11-21T17:06:30+00:00"
+      "fired_at": "2026-11-22T17:37:25+00:00"
     },
     {
       "instrument_id": "googl",
@@ -688,7 +688,7 @@
         "rsi": 27.781,
         "threshold": 30.0
       },
-      "fired_at": "2026-11-21T17:06:30+00:00"
+      "fired_at": "2026-11-22T17:37:25+00:00"
     },
     {
       "instrument_id": "flutter",
@@ -702,7 +702,7 @@
         "rsi": 29.2268,
         "threshold": 30.0
       },
-      "fired_at": "2026-11-21T17:06:30+00:00"
+      "fired_at": "2026-11-22T17:37:25+00:00"
     },
     {
       "instrument_id": "asml",
@@ -716,7 +716,7 @@
         "rsi": 28.8366,
         "threshold": 30.0
       },
-      "fired_at": "2026-11-21T17:06:30+00:00"
+      "fired_at": "2026-11-22T17:37:25+00:00"
     },
     {
       "instrument_id": "asml",
@@ -730,10 +730,205 @@
         "change": -0.1531,
         "days": 5
       },
-      "fired_at": "2026-11-21T17:06:30+00:00"
+      "fired_at": "2026-11-22T17:37:25+00:00"
     }
   ],
   "signals_recent": [
+    {
+      "fired_at": "2026-11-22T17:37:25+00:00",
+      "instrument_id": "asml",
+      "rule_id": "big_move_5d",
+      "level": "medium",
+      "headline": "Down 15.3% over 5 sessions",
+      "detail": "Close moved from 1,495.16 to 1,266.22 (-15.3%) over 5 sessions, past your 10.0% threshold.",
+      "evidence": {
+        "close": 1266.22,
+        "as_of": "2026-11-20",
+        "change": -0.1531,
+        "days": 5
+      },
+      "notified": false
+    },
+    {
+      "fired_at": "2026-11-22T17:37:25+00:00",
+      "instrument_id": "asml",
+      "rule_id": "oversold_dip",
+      "level": "medium",
+      "headline": "RSI(14) fell below 30 \u2014 28.8",
+      "detail": "RSI(14) is 28.8, under your 30 threshold, at a close of 1,266.22. Commonly described as oversold; in a downtrend RSI can stay low for weeks.",
+      "evidence": {
+        "close": 1266.22,
+        "as_of": "2026-11-20",
+        "rsi": 28.8366,
+        "threshold": 30.0
+      },
+      "notified": false
+    },
+    {
+      "fired_at": "2026-11-22T17:37:25+00:00",
+      "instrument_id": "flutter",
+      "rule_id": "oversold_dip",
+      "level": "medium",
+      "headline": "RSI(14) fell below 30 \u2014 29.2",
+      "detail": "RSI(14) is 29.2, under your 30 threshold, at a close of 67.19. Commonly described as oversold; in a downtrend RSI can stay low for weeks.",
+      "evidence": {
+        "close": 67.19,
+        "as_of": "2026-11-20",
+        "rsi": 29.2268,
+        "threshold": 30.0
+      },
+      "notified": false
+    },
+    {
+      "fired_at": "2026-11-22T17:37:25+00:00",
+      "instrument_id": "googl",
+      "rule_id": "oversold_dip",
+      "level": "medium",
+      "headline": "RSI(14) fell below 30 \u2014 27.8",
+      "detail": "RSI(14) is 27.8, under your 30 threshold, at a close of 265.29. Commonly described as oversold; in a downtrend RSI can stay low for weeks.",
+      "evidence": {
+        "close": 265.29,
+        "as_of": "2026-11-20",
+        "rsi": 27.781,
+        "threshold": 30.0
+      },
+      "notified": false
+    },
+    {
+      "fired_at": "2026-11-22T17:37:25+00:00",
+      "instrument_id": "nvda",
+      "rule_id": "big_move_5d",
+      "level": "medium",
+      "headline": "Down 22.9% over 5 sessions",
+      "detail": "Close moved from 162.85 to 125.53 (-22.9%) over 5 sessions, past your 10.0% threshold.",
+      "evidence": {
+        "close": 125.53,
+        "as_of": "2026-11-20",
+        "change": -0.2292,
+        "days": 5
+      },
+      "notified": false
+    },
+    {
+      "fired_at": "2026-11-22T17:37:25+00:00",
+      "instrument_id": "aapl",
+      "rule_id": "pullback_to_50",
+      "level": "medium",
+      "headline": "Pulled back to its 50-day average",
+      "detail": "Close 342.56 is within 2.0% of the 50-day SMA (341.81, +0.2%) while still above its 200-day average.",
+      "evidence": {
+        "close": 342.56,
+        "as_of": "2026-11-20",
+        "ma": 341.8072,
+        "distance": 0.0022
+      },
+      "notified": true
+    },
+    {
+      "fired_at": "2026-11-22T17:37:25+00:00",
+      "instrument_id": "eurostoxx50",
+      "rule_id": "oversold_dip",
+      "level": "medium",
+      "headline": "RSI(14) fell below 30 \u2014 29.6",
+      "detail": "RSI(14) is 29.6, under your 30 threshold, at a close of 61.40. Commonly described as oversold; in a downtrend RSI can stay low for weeks.",
+      "evidence": {
+        "close": 61.4,
+        "as_of": "2026-11-20",
+        "rsi": 29.6216,
+        "threshold": 30.0
+      },
+      "notified": false
+    },
+    {
+      "fired_at": "2026-11-22T17:37:25+00:00",
+      "instrument_id": "nasdaq100",
+      "rule_id": "big_move_1d",
+      "level": "medium",
+      "headline": "Down 5.7% on the day",
+      "detail": "Close moved from 645.04 to 608.45 (-5.7%) on the day, past your 5.0% threshold.",
+      "evidence": {
+        "close": 608.45,
+        "as_of": "2026-11-20",
+        "change": -0.0567,
+        "days": 1
+      },
+      "notified": false
+    },
+    {
+      "fired_at": "2026-11-22T17:37:25+00:00",
+      "instrument_id": "nasdaq100",
+      "rule_id": "oversold_dip",
+      "level": "medium",
+      "headline": "RSI(14) fell below 30 \u2014 26.6",
+      "detail": "RSI(14) is 26.6, under your 30 threshold, at a close of 608.45. Commonly described as oversold; in a downtrend RSI can stay low for weeks.",
+      "evidence": {
+        "close": 608.45,
+        "as_of": "2026-11-20",
+        "rsi": 26.6319,
+        "threshold": 30.0
+      },
+      "notified": false
+    },
+    {
+      "fired_at": "2026-11-22T17:37:25+00:00",
+      "instrument_id": "allworld",
+      "rule_id": "correction_10pct",
+      "level": "medium",
+      "headline": "Down 12.5% from its 252-day high",
+      "detail": "Close 142.08 is -12.5% below the 252-day high of 162.39. Your threshold was 10%.",
+      "evidence": {
+        "close": 142.08,
+        "as_of": "2026-11-20",
+        "drawdown": -0.1251,
+        "period_high": 162.39
+      },
+      "notified": true
+    },
+    {
+      "fired_at": "2026-11-22T17:37:25+00:00",
+      "instrument_id": "world",
+      "rule_id": "correction_10pct",
+      "level": "medium",
+      "headline": "Down 11.4% from its 252-day high",
+      "detail": "Close 187.43 is -11.4% below the 252-day high of 211.51. Your threshold was 10%.",
+      "evidence": {
+        "close": 187.43,
+        "as_of": "2026-11-20",
+        "drawdown": -0.1138,
+        "period_high": 211.51
+      },
+      "notified": false
+    },
+    {
+      "fired_at": "2026-11-22T17:37:25+00:00",
+      "instrument_id": "sp500",
+      "rule_id": "correction_10pct",
+      "level": "medium",
+      "headline": "Down 11.5% from its 252-day high",
+      "detail": "Close 689.81 is -11.5% below the 252-day high of 779.09. Your threshold was 10%.",
+      "evidence": {
+        "close": 689.81,
+        "as_of": "2026-11-20",
+        "drawdown": -0.1146,
+        "period_high": 779.09
+      },
+      "notified": false
+    },
+    {
+      "fired_at": "2026-11-22T17:37:25+00:00",
+      "instrument_id": "sp500",
+      "rule_id": "oversold_dip",
+      "level": "medium",
+      "headline": "RSI(14) fell below 30 \u2014 24.9",
+      "detail": "RSI(14) is 24.9, under your 30 threshold, at a close of 689.81. Commonly described as oversold; in a downtrend RSI can stay low for weeks.",
+      "evidence": {
+        "close": 689.81,
+        "as_of": "2026-11-20",
+        "rsi": 24.9082,
+        "threshold": 30.0
+      },
+      "notified": true
+    },
     {
       "fired_at": "2026-11-21T17:06:30+00:00",
       "instrument_id": "asml",
@@ -1438,204 +1633,6 @@
         "period_high": 162.39
       },
       "notified": true
-    },
-    {
-      "fired_at": "2026-11-20T16:18:47+00:00",
-      "instrument_id": "sp500",
-      "rule_id": "oversold_dip",
-      "level": "medium",
-      "headline": "RSI(14) fell below 30 \u2014 29.2",
-      "detail": "RSI(14) is 29.2, under your 30 threshold, at a close of 707.81. Commonly described as oversold; in a downtrend RSI can stay low for weeks.",
-      "evidence": {
-        "close": 707.81,
-        "as_of": "2026-11-20",
-        "rsi": 29.1696,
-        "threshold": 30.0
-      },
-      "notified": true
-    },
-    {
-      "fired_at": "2026-11-20T02:40:17+00:00",
-      "instrument_id": "eth",
-      "rule_id": "crypto_oversold",
-      "level": "medium",
-      "headline": "RSI(14) fell below 25 \u2014 24.3",
-      "detail": "RSI(14) is 24.3, under your 25 threshold, at a close of 1,583.60. Commonly described as oversold; in a downtrend RSI can stay low for weeks.",
-      "evidence": {
-        "close": 1583.6,
-        "as_of": "2026-11-20",
-        "rsi": 24.2983,
-        "threshold": 25.0
-      },
-      "notified": false
-    },
-    {
-      "fired_at": "2026-11-20T02:40:17+00:00",
-      "instrument_id": "flutter",
-      "rule_id": "big_move_1d",
-      "level": "medium",
-      "headline": "Down 6.1% on the day",
-      "detail": "Close moved from 72.88 to 68.42 (-6.1%) on the day, past your 5.0% threshold.",
-      "evidence": {
-        "close": 68.42,
-        "as_of": "2026-11-19",
-        "change": -0.0612,
-        "days": 1
-      },
-      "notified": false
-    },
-    {
-      "fired_at": "2026-11-20T02:40:17+00:00",
-      "instrument_id": "amzn",
-      "rule_id": "pullback_to_50",
-      "level": "medium",
-      "headline": "Pulled back to its 50-day average",
-      "detail": "Close 257.37 is within 2.0% of the 50-day SMA (255.23, +0.8%) while still above its 200-day average.",
-      "evidence": {
-        "close": 257.37,
-        "as_of": "2026-11-19",
-        "ma": 255.2312,
-        "distance": 0.0084
-      },
-      "notified": false
-    },
-    {
-      "fired_at": "2026-11-20T02:40:17+00:00",
-      "instrument_id": "nvda",
-      "rule_id": "big_move_5d",
-      "level": "medium",
-      "headline": "Down 12.2% over 5 sessions",
-      "detail": "Close moved from 166.19 to 145.98 (-12.2%) over 5 sessions, past your 10.0% threshold.",
-      "evidence": {
-        "close": 145.98,
-        "as_of": "2026-11-19",
-        "change": -0.1216,
-        "days": 5
-      },
-      "notified": false
-    },
-    {
-      "fired_at": "2026-11-20T02:40:17+00:00",
-      "instrument_id": "aapl",
-      "rule_id": "momentum_turn",
-      "level": "low",
-      "headline": "MACD crossed below its signal line",
-      "detail": "MACD (3.544) crossed below the signal line (3.622) at a close of 349.21.",
-      "evidence": {
-        "close": 349.21,
-        "as_of": "2026-11-19",
-        "macd": 3.5437,
-        "signal": 3.6221,
-        "direction": "down"
-      },
-      "notified": false
-    },
-    {
-      "fired_at": "2026-11-19T20:06:28+00:00",
-      "instrument_id": "flutter",
-      "rule_id": "big_move_1d",
-      "level": "medium",
-      "headline": "Down 6.1% on the day",
-      "detail": "Close moved from 72.88 to 68.45 (-6.1%) on the day, past your 5.0% threshold.",
-      "evidence": {
-        "close": 68.45,
-        "as_of": "2026-11-19",
-        "change": -0.0608,
-        "days": 1
-      },
-      "notified": true
-    },
-    {
-      "fired_at": "2026-11-19T20:06:28+00:00",
-      "instrument_id": "amzn",
-      "rule_id": "pullback_to_50",
-      "level": "medium",
-      "headline": "Pulled back to its 50-day average",
-      "detail": "Close 257.08 is within 2.0% of the 50-day SMA (255.23, +0.7%) while still above its 200-day average.",
-      "evidence": {
-        "close": 257.08,
-        "as_of": "2026-11-19",
-        "ma": 255.2254,
-        "distance": 0.0073
-      },
-      "notified": true
-    },
-    {
-      "fired_at": "2026-11-19T20:06:28+00:00",
-      "instrument_id": "nvda",
-      "rule_id": "big_move_5d",
-      "level": "medium",
-      "headline": "Down 11.5% over 5 sessions",
-      "detail": "Close moved from 166.19 to 147.05 (-11.5%) over 5 sessions, past your 10.0% threshold.",
-      "evidence": {
-        "close": 147.05,
-        "as_of": "2026-11-19",
-        "change": -0.1152,
-        "days": 5
-      },
-      "notified": false
-    },
-    {
-      "fired_at": "2026-11-19T20:06:28+00:00",
-      "instrument_id": "aapl",
-      "rule_id": "momentum_turn",
-      "level": "low",
-      "headline": "MACD crossed below its signal line",
-      "detail": "MACD (3.486) crossed below the signal line (3.611) at a close of 348.49.",
-      "evidence": {
-        "close": 348.49,
-        "as_of": "2026-11-19",
-        "macd": 3.4862,
-        "signal": 3.6107,
-        "direction": "down"
-      },
-      "notified": false
-    },
-    {
-      "fired_at": "2026-11-19T16:42:52+00:00",
-      "instrument_id": "msft",
-      "rule_id": "pullback_to_50",
-      "level": "medium",
-      "headline": "Pulled back to its 50-day average",
-      "detail": "Close 515.36 is within 2.0% of the 50-day SMA (520.40, -1.0%) while still above its 200-day average.",
-      "evidence": {
-        "close": 515.355,
-        "as_of": "2026-11-19",
-        "ma": 520.3999,
-        "distance": -0.0097
-      },
-      "notified": true
-    },
-    {
-      "fired_at": "2026-11-19T16:42:52+00:00",
-      "instrument_id": "aapl",
-      "rule_id": "momentum_turn",
-      "level": "low",
-      "headline": "MACD crossed below its signal line",
-      "detail": "MACD (3.626) crossed below the signal line (3.639) at a close of 350.24.",
-      "evidence": {
-        "close": 350.24,
-        "as_of": "2026-11-19",
-        "macd": 3.6258,
-        "signal": 3.6386,
-        "direction": "down"
-      },
-      "notified": true
-    },
-    {
-      "fired_at": "2026-11-19T02:52:15+00:00",
-      "instrument_id": "nvda",
-      "rule_id": "big_move_5d",
-      "level": "medium",
-      "headline": "Down 13.1% over 5 sessions",
-      "detail": "Close moved from 173.73 to 150.96 (-13.1%) over 5 sessions, past your 10.0% threshold.",
-      "evidence": {
-        "close": 150.96,
-        "as_of": "2026-11-18",
-        "change": -0.1311,
-        "days": 5
-      },
-      "notified": false
     }
   ],
   "problems": [],
@@ -2035,7 +2032,6 @@
       0.0
     ],
     "eurusd": [
-      98.45,
       97.61,
       100.0,
       99.93,
@@ -2094,7 +2090,8 @@
       0.0,
       2.09,
       1.06,
-      1.17
+      0.7,
+      1.24
     ],
     "aapl": [
       10.65,
@@ -2717,7 +2714,6 @@
       0.0
     ],
     "btc": [
-      88.21,
       88.39,
       86.86,
       88.26,
@@ -2776,10 +2772,10 @@
       16.1,
       11.98,
       0.0,
-      5.13
+      5.17,
+      7.95
     ],
     "eth": [
-      93.24,
       93.64,
       93.66,
       94.18,
@@ -2838,10 +2834,10 @@
       14.81,
       12.98,
       0.0,
-      6.37
+      6.13,
+      9.08
     ],
     "sol": [
-      84.66,
       88.71,
       98.14,
       97.04,
@@ -2900,7 +2896,8 @@
       9.55,
       8.64,
       0.0,
-      4.07
+      3.01,
+      3.4
     ]
   },
   "counts": {
