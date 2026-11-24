@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-23T23:31:45+00:00",
-  "generated_at_human": "23 Nov 2026, 23:31 UTC",
+  "generated_at": "2026-11-24T05:34:56+00:00",
+  "generated_at_human": "24 Nov 2026, 05:34 UTC",
   "timezone": "Europe/Dublin",
   "totals": {
     "withheld": true,
@@ -27,7 +27,7 @@
       "sma50": 1620.918,
       "sma200": 1601.3576,
       "rsi14": 40.8862,
-      "atr14": 74.3249,
+      "atr14": 74.3256,
       "realized_vol_20": 0.7191,
       "from_252d_high": -0.3044,
       "bars": 400,
@@ -54,7 +54,7 @@
       "sma50": 320.9548,
       "sma200": 336.7696,
       "rsi14": 41.0359,
-      "atr14": 11.9242,
+      "atr14": 11.9245,
       "realized_vol_20": 0.598,
       "from_252d_high": -0.2993,
       "bars": 400,
@@ -127,17 +127,17 @@
       "trade_venue": null,
       "trade_note": "Revolut crypto fees run up to 1.49% depending on plan \u2014 far higher than its equity commissions. Factor that into any short-horizon idea.",
       "is_proxy": true,
-      "as_of": "2026-11-23",
-      "close": 56377.3,
-      "change_1d": 0.0103,
-      "change_5d": -0.0182,
-      "change_21d": -0.1774,
-      "sma50": 68319.406,
-      "sma200": 63235.2215,
-      "rsi14": 30.2407,
-      "atr14": 2821.3791,
-      "realized_vol_20": 0.4224,
-      "from_252d_high": -0.2668,
+      "as_of": "2026-11-24",
+      "close": 55574.9,
+      "change_1d": -0.0098,
+      "change_5d": -0.0158,
+      "change_21d": -0.1947,
+      "sma50": 67896.606,
+      "sma200": 63171.51,
+      "rsi14": 28.1591,
+      "atr14": 2763.6449,
+      "realized_vol_20": 0.3838,
+      "from_252d_high": -0.2772,
       "bars": 400,
       "earnings_date": null,
       "earnings_when": null,
@@ -182,16 +182,16 @@
       "trade_note": "Not something to trade here \u2014 tracked because it moves the EUR value of every USD-denominated holding above. Forex is on Twelve Data's free tier.",
       "is_proxy": false,
       "as_of": "2026-11-24",
-      "close": 1.0908,
-      "change_1d": 0.0004,
-      "change_5d": -0.006,
-      "change_21d": -0.0252,
+      "close": 1.0911,
+      "change_1d": 0.0007,
+      "change_5d": -0.0057,
+      "change_21d": -0.0249,
       "sma50": 1.1136,
       "sma200": 1.1425,
-      "rsi14": 24.7401,
-      "atr14": 0.0052,
-      "realized_vol_20": 0.0529,
-      "from_252d_high": -0.0756,
+      "rsi14": 25.5632,
+      "atr14": 0.0053,
+      "realized_vol_20": 0.053,
+      "from_252d_high": -0.0753,
       "bars": 400,
       "earnings_date": null,
       "earnings_when": null,
@@ -208,17 +208,17 @@
       "trade_venue": null,
       "trade_note": null,
       "is_proxy": true,
-      "as_of": "2026-11-23",
-      "close": 1574.47,
-      "change_1d": 0.0033,
-      "change_5d": -0.0271,
-      "change_21d": -0.2168,
-      "sma50": 1996.0466,
-      "sma200": 1855.2451,
-      "rsi14": 31.4691,
-      "atr14": 102.3127,
-      "realized_vol_20": 0.62,
-      "from_252d_high": -0.3502,
+      "as_of": "2026-11-24",
+      "close": 1564.94,
+      "change_1d": -0.0015,
+      "change_5d": -0.0226,
+      "change_21d": -0.228,
+      "sma50": 1978.888,
+      "sma200": 1853.2441,
+      "rsi14": 30.6637,
+      "atr14": 98.3353,
+      "realized_vol_20": 0.5582,
+      "from_252d_high": -0.3541,
       "bars": 400,
       "earnings_date": null,
       "earnings_when": null,
@@ -243,7 +243,7 @@
       "sma50": 66.3028,
       "sma200": 67.0975,
       "rsi14": 39.4097,
-      "atr14": 1.1281,
+      "atr14": 1.1282,
       "realized_vol_20": 0.2742,
       "from_252d_high": -0.125,
       "bars": 400,
@@ -297,7 +297,7 @@
       "sma50": 80.2244,
       "sma200": 99.3692,
       "rsi14": 29.7961,
-      "atr14": 4.2818,
+      "atr14": 4.2846,
       "realized_vol_20": 0.4913,
       "from_252d_high": -0.699,
       "bars": 400,
@@ -425,16 +425,16 @@
       "trade_note": "iShares Nasdaq 100 UCITS ETF (Acc), also listed as CNDX. Invesco EQQQ (IE0032077012) is the common alternative.",
       "is_proxy": true,
       "as_of": "2026-11-23",
-      "close": 650.87,
-      "change_1d": 0.0697,
-      "change_5d": -0.0164,
-      "change_21d": -0.076,
-      "sma50": 709.791,
-      "sma200": 683.2669,
-      "rsi14": 42.1385,
-      "atr14": 20.9343,
-      "realized_vol_20": 0.4688,
-      "from_252d_high": -0.1432,
+      "close": 651.03,
+      "change_1d": 0.07,
+      "change_5d": -0.0162,
+      "change_21d": -0.0758,
+      "sma50": 709.7942,
+      "sma200": 683.2677,
+      "rsi14": 42.1846,
+      "atr14": 20.9363,
+      "realized_vol_20": 0.4692,
+      "from_252d_high": -0.143,
       "bars": 400,
       "earnings_date": null,
       "earnings_when": null,
@@ -513,7 +513,7 @@
       "sma50": 759.408,
       "sma200": 732.9136,
       "rsi14": 41.5122,
-      "atr14": 15.3494,
+      "atr14": 15.3501,
       "realized_vol_20": 0.3111,
       "from_252d_high": -0.0729,
       "bars": 400,
@@ -532,17 +532,17 @@
       "trade_venue": null,
       "trade_note": null,
       "is_proxy": true,
-      "as_of": "2026-11-23",
-      "close": 66.16,
-      "change_1d": 0.0284,
-      "change_5d": -0.0134,
-      "change_21d": -0.1938,
-      "sma50": 84.4732,
-      "sma200": 77.2684,
-      "rsi14": 34.0318,
-      "atr14": 4.4527,
-      "realized_vol_20": 0.5891,
-      "from_252d_high": -0.3874,
+      "as_of": "2026-11-24",
+      "close": 65.74,
+      "change_1d": -0.0042,
+      "change_5d": -0.0137,
+      "change_21d": -0.2054,
+      "sma50": 83.632,
+      "sma200": 77.2059,
+      "rsi14": 33.2968,
+      "atr14": 4.2997,
+      "realized_vol_20": 0.5714,
+      "from_252d_high": -0.3912,
       "bars": 400,
       "earnings_date": null,
       "earnings_when": null,
@@ -555,14 +555,14 @@
       "rule_id": "big_move_1d",
       "level": "medium",
       "headline": "Up 7.0% on the day",
-      "detail": "Close moved from 608.45 to 650.87 (+7.0%) on the day, past your 5.0% threshold.",
+      "detail": "Close moved from 608.45 to 651.03 (+7.0%) on the day, past your 5.0% threshold.",
       "evidence": {
-        "close": 650.87,
+        "close": 651.03,
         "as_of": "2026-11-23",
-        "change": 0.0697,
+        "change": 0.07,
         "days": 1
       },
-      "fired_at": "2026-11-23T23:31:45+00:00"
+      "fired_at": "2026-11-24T05:34:56+00:00"
     },
     {
       "instrument_id": "nasdaq100",
@@ -571,12 +571,12 @@
       "headline": "Volatility jumped to 47% annualised",
       "detail": "20-day realised volatility is 47%, above your 40% threshold. Position sizes calibrated in calmer conditions carry more risk than they did.",
       "evidence": {
-        "close": 650.87,
+        "close": 651.03,
         "as_of": "2026-11-23",
-        "realized_vol": 0.4688,
+        "realized_vol": 0.4692,
         "threshold": 0.4
       },
-      "fired_at": "2026-11-23T23:31:45+00:00"
+      "fired_at": "2026-11-24T05:34:56+00:00"
     },
     {
       "instrument_id": "googl",
@@ -590,7 +590,7 @@
         "change": 0.0634,
         "days": 1
       },
-      "fired_at": "2026-11-23T23:31:45+00:00"
+      "fired_at": "2026-11-24T05:34:56+00:00"
     },
     {
       "instrument_id": "amzn",
@@ -604,10 +604,70 @@
         "ma": 255.069,
         "distance": 0.0013
       },
-      "fired_at": "2026-11-23T23:31:45+00:00"
+      "fired_at": "2026-11-24T05:34:56+00:00"
     }
   ],
   "signals_recent": [
+    {
+      "fired_at": "2026-11-24T05:34:56+00:00",
+      "instrument_id": "amzn",
+      "rule_id": "pullback_to_50",
+      "level": "medium",
+      "headline": "Pulled back to its 50-day average",
+      "detail": "Close 255.39 is within 2.0% of the 50-day SMA (255.07, +0.1%) while still above its 200-day average.",
+      "evidence": {
+        "close": 255.39,
+        "as_of": "2026-11-23",
+        "ma": 255.069,
+        "distance": 0.0013
+      },
+      "notified": false
+    },
+    {
+      "fired_at": "2026-11-24T05:34:56+00:00",
+      "instrument_id": "googl",
+      "rule_id": "big_move_1d",
+      "level": "medium",
+      "headline": "Up 6.3% on the day",
+      "detail": "Close moved from 265.29 to 282.10 (+6.3%) on the day, past your 5.0% threshold.",
+      "evidence": {
+        "close": 282.1,
+        "as_of": "2026-11-23",
+        "change": 0.0634,
+        "days": 1
+      },
+      "notified": false
+    },
+    {
+      "fired_at": "2026-11-24T05:34:56+00:00",
+      "instrument_id": "nasdaq100",
+      "rule_id": "vol_regime_shift",
+      "level": "medium",
+      "headline": "Volatility jumped to 47% annualised",
+      "detail": "20-day realised volatility is 47%, above your 40% threshold. Position sizes calibrated in calmer conditions carry more risk than they did.",
+      "evidence": {
+        "close": 651.03,
+        "as_of": "2026-11-23",
+        "realized_vol": 0.4692,
+        "threshold": 0.4
+      },
+      "notified": false
+    },
+    {
+      "fired_at": "2026-11-24T05:34:56+00:00",
+      "instrument_id": "nasdaq100",
+      "rule_id": "big_move_1d",
+      "level": "medium",
+      "headline": "Up 7.0% on the day",
+      "detail": "Close moved from 608.45 to 651.03 (+7.0%) on the day, past your 5.0% threshold.",
+      "evidence": {
+        "close": 651.03,
+        "as_of": "2026-11-23",
+        "change": 0.07,
+        "days": 1
+      },
+      "notified": false
+    },
     {
       "fired_at": "2026-11-23T23:31:45+00:00",
       "instrument_id": "amzn",
@@ -1447,66 +1507,6 @@
         "days": 5
       },
       "notified": false
-    },
-    {
-      "fired_at": "2026-11-20T19:43:42+00:00",
-      "instrument_id": "aapl",
-      "rule_id": "pullback_to_50",
-      "level": "medium",
-      "headline": "Pulled back to its 50-day average",
-      "detail": "Close 344.52 is within 2.0% of the 50-day SMA (341.85, +0.8%) while still above its 200-day average.",
-      "evidence": {
-        "close": 344.525,
-        "as_of": "2026-11-20",
-        "ma": 341.8465,
-        "distance": 0.0078
-      },
-      "notified": false
-    },
-    {
-      "fired_at": "2026-11-20T19:43:42+00:00",
-      "instrument_id": "nasdaq100",
-      "rule_id": "oversold_dip",
-      "level": "medium",
-      "headline": "RSI(14) fell below 30 \u2014 28.0",
-      "detail": "RSI(14) is 28.0, under your 30 threshold, at a close of 616.72. Commonly described as oversold; in a downtrend RSI can stay low for weeks.",
-      "evidence": {
-        "close": 616.72,
-        "as_of": "2026-11-20",
-        "rsi": 27.9898,
-        "threshold": 30.0
-      },
-      "notified": true
-    },
-    {
-      "fired_at": "2026-11-20T19:43:42+00:00",
-      "instrument_id": "allworld",
-      "rule_id": "correction_10pct",
-      "level": "medium",
-      "headline": "Down 11.9% from its 252-day high",
-      "detail": "Close 143.09 is -11.9% below the 252-day high of 162.39. Your threshold was 10%.",
-      "evidence": {
-        "close": 143.085,
-        "as_of": "2026-11-20",
-        "drawdown": -0.1189,
-        "period_high": 162.39
-      },
-      "notified": false
-    },
-    {
-      "fired_at": "2026-11-20T19:43:42+00:00",
-      "instrument_id": "world",
-      "rule_id": "correction_10pct",
-      "level": "medium",
-      "headline": "Down 10.7% from its 252-day high",
-      "detail": "Close 188.98 is -10.7% below the 252-day high of 211.51. Your threshold was 10%.",
-      "evidence": {
-        "close": 188.98,
-        "as_of": "2026-11-20",
-        "drawdown": -0.1065,
-        "period_high": 211.51
-      },
-      "notified": false
     }
   ],
   "problems": [],
@@ -1779,7 +1779,7 @@
       33.77,
       24.2,
       0.0,
-      28.05
+      28.16
     ],
     "eurostoxx50": [
       100.0,
@@ -1965,7 +1965,7 @@
       13.22,
       13.69,
       0.0,
-      0.82
+      1.54
     ],
     "aapl": [
       3.69,
@@ -2588,7 +2588,6 @@
       19.56
     ],
     "btc": [
-      86.86,
       88.26,
       88.5,
       85.04,
@@ -2647,10 +2646,10 @@
       0.0,
       5.17,
       9.12,
-      11.59
+      10.5,
+      8.13
     ],
     "eth": [
-      93.66,
       94.18,
       93.52,
       93.74,
@@ -2709,10 +2708,10 @@
       0.0,
       6.13,
       9.61,
-      10.16
+      9.39,
+      9.15
     ],
     "sol": [
-      98.14,
       97.04,
       98.19,
       92.35,
@@ -2771,7 +2770,8 @@
       0.0,
       3.01,
       3.51,
-      7.56
+      7.25,
+      6.63
     ]
   },
   "counts": {
