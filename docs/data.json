@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-26T21:03:33+00:00",
-  "generated_at_human": "26 Nov 2026, 21:03 UTC",
+  "generated_at": "2026-11-27T03:49:35+00:00",
+  "generated_at_human": "27 Nov 2026, 03:49 UTC",
   "timezone": "Europe/Dublin",
   "totals": {
     "withheld": true,
@@ -127,17 +127,17 @@
       "trade_venue": null,
       "trade_note": "Revolut crypto fees run up to 1.49% depending on plan \u2014 far higher than its equity commissions. Factor that into any short-horizon idea.",
       "is_proxy": true,
-      "as_of": "2026-11-26",
-      "close": 55374.9,
-      "change_1d": 0.006,
-      "change_5d": 0.0089,
-      "change_21d": -0.1822,
-      "sma50": 67075.798,
-      "sma200": 63026.7215,
-      "rsi14": 30.3349,
-      "atr14": 2711.9874,
-      "realized_vol_20": 0.3649,
-      "from_252d_high": -0.2798,
+      "as_of": "2026-11-27",
+      "close": 55968.6,
+      "change_1d": 0.0146,
+      "change_5d": 0.003,
+      "change_21d": -0.1768,
+      "sma50": 66733.486,
+      "sma200": 62958.577,
+      "rsi14": 33.1778,
+      "atr14": 2606.3026,
+      "realized_vol_20": 0.3714,
+      "from_252d_high": -0.2721,
       "bars": 400,
       "earnings_date": null,
       "earnings_when": null,
@@ -182,16 +182,16 @@
       "trade_note": "Not something to trade here \u2014 tracked because it moves the EUR value of every USD-denominated holding above. Forex is on Twelve Data's free tier.",
       "is_proxy": false,
       "as_of": "2026-11-27",
-      "close": 1.0969,
-      "change_1d": -0.0003,
-      "change_5d": -0.0001,
-      "change_21d": -0.0153,
-      "sma50": 1.1122,
+      "close": 1.0979,
+      "change_1d": 0.0006,
+      "change_5d": 0.0007,
+      "change_21d": -0.0145,
+      "sma50": 1.1123,
       "sma200": 1.1413,
-      "rsi14": 37.6819,
-      "atr14": 0.0052,
-      "realized_vol_20": 0.0536,
-      "from_252d_high": -0.0704,
+      "rsi14": 39.2182,
+      "atr14": 0.0054,
+      "realized_vol_20": 0.0537,
+      "from_252d_high": -0.0696,
       "bars": 400,
       "earnings_date": null,
       "earnings_when": null,
@@ -208,17 +208,17 @@
       "trade_venue": null,
       "trade_note": null,
       "is_proxy": true,
-      "as_of": "2026-11-26",
-      "close": 1553.36,
-      "change_1d": 0.0077,
-      "change_5d": 0.011,
-      "change_21d": -0.2204,
-      "sma50": 1946.1948,
-      "sma200": 1848.5962,
-      "rsi14": 31.7613,
-      "atr14": 94.6894,
-      "realized_vol_20": 0.5135,
-      "from_252d_high": -0.3589,
+      "as_of": "2026-11-27",
+      "close": 1572.91,
+      "change_1d": 0.0223,
+      "change_5d": 0.0023,
+      "change_21d": -0.2162,
+      "sma50": 1933.265,
+      "sma200": 1846.4568,
+      "rsi14": 34.5801,
+      "atr14": 91.2837,
+      "realized_vol_20": 0.5222,
+      "from_252d_high": -0.3508,
       "bars": 400,
       "earnings_date": null,
       "earnings_when": null,
@@ -532,17 +532,17 @@
       "trade_venue": null,
       "trade_note": null,
       "is_proxy": true,
-      "as_of": "2026-11-26",
-      "close": 65.03,
-      "change_1d": 0.0132,
-      "change_5d": 0.0145,
-      "change_21d": -0.1821,
-      "sma50": 81.9502,
-      "sma200": 77.036,
-      "rsi14": 34.659,
-      "atr14": 4.2531,
-      "realized_vol_20": 0.5487,
-      "from_252d_high": -0.3978,
+      "as_of": "2026-11-27",
+      "close": 66.41,
+      "change_1d": 0.0267,
+      "change_5d": 0.0323,
+      "change_21d": -0.1781,
+      "sma50": 81.3176,
+      "sma200": 76.953,
+      "rsi14": 38.4453,
+      "atr14": 4.0893,
+      "realized_vol_20": 0.5608,
+      "from_252d_high": -0.385,
       "bars": 400,
       "earnings_date": null,
       "earnings_when": null,
@@ -562,10 +562,25 @@
         "change": 0.0514,
         "days": 1
       },
-      "fired_at": "2026-11-26T21:03:33+00:00"
+      "fired_at": "2026-11-27T03:49:35+00:00"
     }
   ],
   "signals_recent": [
+    {
+      "fired_at": "2026-11-27T03:49:35+00:00",
+      "instrument_id": "flutter",
+      "rule_id": "big_move_1d",
+      "level": "medium",
+      "headline": "Up 5.1% on the day",
+      "detail": "Close moved from 67.30 to 70.76 (+5.1%) on the day, past your 5.0% threshold.",
+      "evidence": {
+        "close": 70.76,
+        "as_of": "2026-11-25",
+        "change": 0.0514,
+        "days": 1
+      },
+      "notified": false
+    },
     {
       "fired_at": "2026-11-26T21:03:33+00:00",
       "instrument_id": "flutter",
@@ -1450,21 +1465,6 @@
         "threshold": 30.0
       },
       "notified": false
-    },
-    {
-      "fired_at": "2026-11-20T19:43:42+00:00",
-      "instrument_id": "sol",
-      "rule_id": "crypto_oversold",
-      "level": "medium",
-      "headline": "RSI(14) fell below 25 \u2014 24.5",
-      "detail": "RSI(14) is 24.5, under your 25 threshold, at a close of 62.27. Commonly described as oversold; in a downtrend RSI can stay low for weeks.",
-      "evidence": {
-        "close": 62.27,
-        "as_of": "2026-11-20",
-        "rsi": 24.4691,
-        "threshold": 25.0
-      },
-      "notified": false
     }
   ],
   "problems": [],
@@ -1923,7 +1923,7 @@
       14.11,
       17.32,
       15.63,
-      14.95
+      17.04
     ],
     "aapl": [
       23.5,
@@ -2546,7 +2546,6 @@
       6.13
     ],
     "btc": [
-      85.04,
       86.49,
       86.61,
       93.71,
@@ -2605,10 +2604,10 @@
       10.5,
       3.55,
       5.84,
-      7.27
+      6.36,
+      9.83
     ],
     "eth": [
-      93.74,
       93.41,
       94.36,
       98.13,
@@ -2667,10 +2666,10 @@
       9.39,
       5.56,
       6.66,
-      7.92
+      6.36,
+      9.99
     ],
     "sol": [
-      92.35,
       93.44,
       91.6,
       94.03,
@@ -2729,7 +2728,8 @@
       7.25,
       1.75,
       3.18,
-      5.06
+      4.29,
+      8.11
     ]
   },
   "counts": {
